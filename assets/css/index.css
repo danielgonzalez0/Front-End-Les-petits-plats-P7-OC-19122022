@@ -1,3 +1,157 @@
+@font-face {
+  font-family: "font-1-regular";
+  src: url(../fonts/lato/Lato-Regular.ttf);
+}
+@font-face {
+  font-family: "font-title";
+  src: url(../fonts/DM_sans/DMSans-Bold.ttf);
+}
+@font-face {
+  font-family: "font-1-bold";
+  src: url(../fonts/lato/Lato-Bold.ttf);
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  font-family: "font-1-bold", sans-serif, sans-serif;
+}
+
 body {
-  background: blue;
+  background: #e5e5e5;
+}
+
+.wrapper {
+  margin: 0 100px;
+  max-width: 1240px;
+}
+
+li,
+a {
+  -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  -moz-user-select: none;
+       user-select: none; /* Standard syntax */
+}
+
+a,
+a:visited {
+  color: rgb(237, 100, 84);
+  text-decoration: none;
+}
+
+img {
+  width: 100%;
+  height: auto;
+}
+
+input {
+  border: none;
+}
+
+.filter-btn {
+  position: relative;
+  width: 170px;
+  height: 69px;
+  font-size: 18px;
+  border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  color: white;
+  font-family: "font-1-regular", sans-serif;
+  border: none;
+}
+.filter-btn svg {
+  fill: white;
+  width: 20px;
+  height: 15px;
+}
+.filter-btn:hover {
+  outline: solid 2px black;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 42px 0 17px 0;
+}
+
+.logo {
+  width: 50px;
+  height: 46px;
+}
+
+h1 {
+  color: rgb(237, 100, 84);
+  font-family: "font-title", sans-serif;
+  font-size: 2.2rem;
+  line-height: 47px;
+}
+
+.search-section {
+  position: relative;
+}
+.search-section #searchbar {
+  width: 100%;
+  background: rgb(199, 190, 190);
+  border-radius: 5px;
+  height: 69px;
+  font-family: "font-1-regular", sans-serif;
+  font-size: 18px;
+  padding-left: 24px;
+}
+.search-section #searchbar:hover {
+  outline: solid 2px rgb(237, 100, 84);
+}
+.search-section #searchbar:focus-visible {
+  outline: solid 2px rgb(50, 130, 247);
+}
+.search-section #search-btn {
+  height: 69px;
+  width: 69px;
+  border-radius: 5px;
+  background: rgb(199, 190, 190);
+  border: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  cursor: pointer;
+}
+.search-section #search-btn svg {
+  height: 32px;
+  height: 32px;
+}
+.search-section #search-btn:focus-visible {
+  outline: none;
+}
+.search-section #search-btn:focus-visible svg, .search-section #search-btn:hover svg {
+  transform: scale(1.1);
+  fill: rgb(237, 100, 84);
+}
+
+.filter-section {
+  padding: 20px 0;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+#btnKeywords-1 {
+  background: rgb(50, 130, 247);
+}
+
+#btnKeywords-2 {
+  background: rgb(104, 217, 164);
+}
+
+#btnKeywords-3 {
+  background: rgb(237, 100, 84);
 }/*# sourceMappingURL=index.css.map */

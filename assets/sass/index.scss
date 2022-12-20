@@ -1,3 +1,6 @@
-body {
-  background: blue;
-}
+@import './base/typography';
+@import './utils/variables';
+@import './base/settings';
+@import './layout/header';
+@import './layout/searchbar';
+@import './layout/filter-section';
