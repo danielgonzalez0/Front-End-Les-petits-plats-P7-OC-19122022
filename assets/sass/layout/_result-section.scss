@@ -1,0 +1,31 @@
+.result-section {
+  display: flex;
+  gap: 20px;
+  padding-top: 25px;
+
+  .result-container {
+    border-radius: 5px;
+    padding: 10px 20px;
+    color: white;
+    font-family: $font-1-regular;
+    font-size: 14px;
+    display: flex;
+    gap: 13px;
+    svg {
+      fill: white;
+      width: 20px;
+      height: 20px;
+      cursor: pointer;
+    }
+  }
+}
+
+#ingredientsResult {
+  background: $color2;
+}
+#appliancesResult {
+  background: $color3;
+}
+#ustentilsResult {
+  background: $color1;
+}

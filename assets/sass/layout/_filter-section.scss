@@ -1,4 +1,5 @@
 .filter-section {
+  position: relative;
   padding: 20px 0;
   display: flex;
   justify-content: flex-start;
@@ -12,5 +13,80 @@
   background: $color3;
 }
 #btnKeywords-3 {
+  background: $color1;
+}
+
+.keyWords {
+  color: white;
+  font-family: $font-1-regular;
+  font-size: 18px;
+  position: relative;
+  min-width: 270px;
+  max-width: 667px;
+  border-radius: 5px;
+
+  .keyWordsSearch-container {
+    input {
+      padding-left: 20px;
+      color: white;
+      font-family: $font-1-regular;
+      font-size: 18px;
+      border-radius: 5px 5px 0 0;
+      height: 69px;
+      min-width: 223px;
+      width: 100%;
+      &::placeholder {
+        color: rgba(255, 255, 255, 0.5);
+      }
+      &:focus-visible {
+        outline: none;
+      }
+    }
+    .svg-container {
+      position: absolute;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      top: 0;
+      right: 0;
+      height: 69px;
+      width: 69px;
+      cursor: pointer;
+      svg {
+        fill: white;
+        width: 20px;
+        height: 15px;
+      }
+    }
+  }
+  .keyWordsList {
+    display: grid;
+    grid-template-rows: repeat(auto-fit,40px);
+    grid-auto-flow: column;
+    max-width: 667px;
+    max-height: 440px;
+    align-items: center;
+    padding-bottom: 10px;
+    border-radius: 0 0 5px 5px;
+    li {
+      width: 223px;
+      height: 40px;
+      padding-left: 20px;
+      font-family: $font-1-regular;
+      font-size: 18px;
+    }
+  }
+}
+
+#keyWordsIngredients,
+#ingredientsList {
+  background: $color2;
+}
+#keyWordsAppliances,
+#appliancesList {
+  background: $color3;
+}
+#keyWordsUstensils,
+#ustensilsList {
   background: $color1;
 }

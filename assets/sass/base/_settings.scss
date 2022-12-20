@@ -49,6 +49,7 @@ input {
   color: white;
   font-family: $font-1-regular;
   border: none;
+  cursor: pointer;
 
   svg {
     fill: white;
@@ -62,6 +63,5 @@ input {
 }
 
 .hidden {
-  visibility: hidden;
+  display: none;
 }
-

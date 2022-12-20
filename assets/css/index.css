@@ -62,6 +62,7 @@ input {
   color: white;
   font-family: "font-1-regular", sans-serif;
   border: none;
+  cursor: pointer;
 }
 .filter-btn svg {
   fill: white;
@@ -73,7 +74,7 @@ input {
 }
 
 .hidden {
-  visibility: hidden;
+  display: none;
 }
 
 header {
@@ -137,7 +138,41 @@ h1 {
   fill: rgb(237, 100, 84);
 }
 
+.result-section {
+  display: flex;
+  gap: 20px;
+  padding-top: 25px;
+}
+.result-section .result-container {
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: white;
+  font-family: "font-1-regular", sans-serif;
+  font-size: 14px;
+  display: flex;
+  gap: 13px;
+}
+.result-section .result-container svg {
+  fill: white;
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+#ingredientsResult {
+  background: rgb(50, 130, 247);
+}
+
+#appliancesResult {
+  background: rgb(104, 217, 164);
+}
+
+#ustentilsResult {
+  background: rgb(237, 100, 84);
+}
+
 .filter-section {
+  position: relative;
   padding: 20px 0;
   display: flex;
   justify-content: flex-start;
@@ -153,5 +188,85 @@ h1 {
 }
 
 #btnKeywords-3 {
+  background: rgb(237, 100, 84);
+}
+
+.keyWords {
+  color: white;
+  font-family: "font-1-regular", sans-serif;
+  font-size: 18px;
+  position: relative;
+  min-width: 270px;
+  max-width: 667px;
+  border-radius: 5px;
+}
+.keyWords .keyWordsSearch-container input {
+  padding-left: 20px;
+  color: white;
+  font-family: "font-1-regular", sans-serif;
+  font-size: 18px;
+  border-radius: 5px 5px 0 0;
+  height: 69px;
+  min-width: 223px;
+  width: 100%;
+}
+.keyWords .keyWordsSearch-container input::-moz-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.keyWords .keyWordsSearch-container input:-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.keyWords .keyWordsSearch-container input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+.keyWords .keyWordsSearch-container input:focus-visible {
+  outline: none;
+}
+.keyWords .keyWordsSearch-container .svg-container {
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 0;
+  right: 0;
+  height: 69px;
+  width: 69px;
+  cursor: pointer;
+}
+.keyWords .keyWordsSearch-container .svg-container svg {
+  fill: white;
+  width: 20px;
+  height: 15px;
+}
+.keyWords .keyWordsList {
+  display: grid;
+  grid-template-rows: repeat(auto-fit, 40px);
+  grid-auto-flow: column;
+  max-width: 667px;
+  max-height: 440px;
+  align-items: center;
+  padding-bottom: 10px;
+  border-radius: 0 0 5px 5px;
+}
+.keyWords .keyWordsList li {
+  width: 223px;
+  height: 40px;
+  padding-left: 20px;
+  font-family: "font-1-regular", sans-serif;
+  font-size: 18px;
+}
+
+#keyWordsIngredients,
+#ingredientsList {
+  background: rgb(50, 130, 247);
+}
+
+#keyWordsAppliances,
+#appliancesList {
+  background: rgb(104, 217, 164);
+}
+
+#keyWordsUstensils,
+#ustensilsList {
   background: rgb(237, 100, 84);
 }/*# sourceMappingURL=index.css.map */
