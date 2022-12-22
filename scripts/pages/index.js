@@ -1,9 +1,14 @@
 import { RecipesApi } from '../api/api.js';
 import { RecipesFactory } from '../factories/recipesFactory.js';
-import { closeTagList, openTagList, tagUpdate } from '../utils/tagForm.js';
+import { closeTagList, openTagList, tagInit } from '../utils/tagForm.js';
 
 export let recipesArray = [];
 export let ingredientsArray = [];
+export let appliancesArray = [];
+export let ustensilsArray = [];
+const ingredientsTagList = document.getElementById('ingredientsList');
+const appliancesTagList = document.getElementById('appliancesList');
+const ustensilsTagList = document.getElementById('ustensilsList');
 
 /**
  * create an array with all the recipes datas
@@ -37,6 +42,33 @@ async function getAllIngredients(array) {
   });
   return ingredientsList;
 }
+/**
+ * create an array with all the appliances
+ * @param {array} array with the recipes datas from the API
+ * @returns an array with all the appliances
+ */
+
+async function getAllAppliances(array) {
+  let appliancesList = [];
+  array.forEach((index) => {
+    if (!appliancesList.includes(index.appliance)) {
+      appliancesList.push(index.appliance);
+    }
+  });
+  return appliancesList;
+}
+
+async function getAllUstentils(array) {
+  let ustensilList = [];
+  array.forEach((index) => {
+    index.ustensils.forEach((ustentil) => {
+      if (!ustensilList.includes(ustentil)) {
+        ustensilList.push(ustentil);
+      }
+    });
+  });
+  return ustensilList;
+}
 
 /**
  * initialization of index page
@@ -56,13 +88,19 @@ async function init() {
   console.log(recipesArray[35]);
 
   ingredientsArray = await getAllIngredients(recipesData);
-  //test
-  console.log(`Array created with all recipes datas: `);
-  console.log(ingredientsArray);
+  appliancesArray = await getAllAppliances(recipesData);
+  ustensilsArray = await getAllUstentils(recipesData);
 
+  //test
+  console.log(`Array created with all ustentils: `);
+  console.log(ustensilsArray);
+
+  //tag
   await openTagList();
-  await closeTagList()
-  await tagUpdate();
+  await closeTagList();
+  await tagInit(ingredientsArray, ingredientsTagList);
+  await tagInit(appliancesArray, appliancesTagList);
+  await tagInit(ustensilsArray, ustensilsTagList);
 }
 
 init();

@@ -143,6 +143,7 @@ h1 {
 
 .tag-section {
   display: flex;
+  flex-wrap: wrap;
   gap: 20px;
   padding-top: 25px;
 }
@@ -276,16 +277,22 @@ h1 {
   grid-auto-flow: column;
   max-width: 667px;
   max-height: 440px;
-  align-items: center;
+  line-height: 40px;
   padding-bottom: 10px;
   border-radius: 0 0 5px 5px;
 }
 .keyWords .keyWordsList li {
+  position: relative;
   width: 223px;
   height: 40px;
   padding-left: 20px;
   font-family: "font-1-regular", sans-serif;
   font-size: 18px;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}
+.keyWords .keyWordsList li:hover {
+  color: black;
 }
 
 #keyWordsIngredients,

@@ -99,15 +99,22 @@
     grid-auto-flow: column;
     max-width: 667px;
     max-height: 440px;
-    align-items: center;
+    line-height: 40px;
     padding-bottom: 10px;
     border-radius: 0 0 5px 5px;
     li {
+      position: relative;
       width: 223px;
       height: 40px;
       padding-left: 20px;
       font-family: $font-1-regular;
       font-size: 18px;
+      cursor: pointer;
+      transition: ease-in-out 0.3s;
+
+      &:hover {
+        color: black;
+      }
     }
   }
 }

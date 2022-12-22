@@ -1,4 +1,4 @@
-import { ingredientsArray } from '../pages/index.js';
+
 const tagBtn = document.querySelectorAll('.filter-btn');
 const svgTagList = document.querySelectorAll('.svg-container');
 
@@ -31,6 +31,19 @@ export const closeTagList = () => {
   });
 };
 
-export async function tagUpdate() {
-  console.log(ingredientsArray);
+
+/**
+ * create a tag list and append it to the DOM
+ * @param {array} tagArray array with the tag list
+ * @param {HTMLElement} tagListElement HTML element parent of the tag list
+ */
+
+export async function tagInit(tagArray, tagListElement) {
+  tagArray.forEach((tag) => {
+    const element = document.createElement('li');
+    element.setAttribute('tabindex', 0);
+    element.setAttribute('data-tagName', tag);
+    element.textContent = tag;
+    tagListElement.appendChild(element);
+  });
 }
