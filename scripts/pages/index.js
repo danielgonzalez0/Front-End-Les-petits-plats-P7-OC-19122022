@@ -1,5 +1,9 @@
 import { RecipesApi } from '../api/api.js';
 import { RecipesFactory } from '../factories/recipesFactory.js';
+import { closeTagList, openTagList, tagUpdate } from '../utils/tagForm.js';
+
+export let recipesArray = [];
+export let ingredientsArray = [];
 
 /**
  * create an array with all the recipes datas
@@ -25,10 +29,10 @@ async function arrayCreation(array) {
 async function getAllIngredients(array) {
   let ingredientsList = [];
   array.forEach((index) => {
-    index.ingredients.forEach((ingredient)=>{
-        if (!ingredientsList.includes(ingredient.ingredient)) {
-          ingredientsList.push(ingredient.ingredient);
-        }
+    index.ingredients.forEach((ingredient) => {
+      if (!ingredientsList.includes(ingredient.ingredient)) {
+        ingredientsList.push(ingredient.ingredient);
+      }
     });
   });
   return ingredientsList;
@@ -45,16 +49,20 @@ async function init() {
   //test
   console.log(`data from Json file: `);
   console.log(recipesData);
-  const recipesArray = await arrayCreation(recipesData);
+  recipesArray = await arrayCreation(recipesData);
 
   //test
   console.log(`Array created with all recipes datas: `);
   console.log(recipesArray[35]);
 
-  const ingredientsArray = await getAllIngredients(recipesData);
+  ingredientsArray = await getAllIngredients(recipesData);
   //test
   console.log(`Array created with all recipes datas: `);
   console.log(ingredientsArray);
+
+  await openTagList();
+  await closeTagList()
+  await tagUpdate();
 }
 
 init();

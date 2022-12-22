@@ -7,11 +7,14 @@
 }
 
 body {
-  background: $color6;
+  background:$color6;
+  display: flex;
+  justify-content: center;
 }
 
 .wrapper {
   margin: 0 100px;
+  min-width: 80%;
   max-width: 1240px;
 }
 

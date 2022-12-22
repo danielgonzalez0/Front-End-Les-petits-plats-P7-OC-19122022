@@ -19,11 +19,14 @@
 }
 
 body {
-  background: #e5e5e5;
+  background: rgb(251, 251, 251);
+  display: flex;
+  justify-content: center;
 }
 
 .wrapper {
   margin: 0 100px;
+  min-width: 80%;
   max-width: 1240px;
 }
 
@@ -138,12 +141,12 @@ h1 {
   fill: rgb(237, 100, 84);
 }
 
-.result-section {
+.tag-section {
   display: flex;
   gap: 20px;
   padding-top: 25px;
 }
-.result-section .result-container {
+.tag-section .tag-container {
   border-radius: 5px;
   padding: 10px 20px;
   color: white;
@@ -152,22 +155,22 @@ h1 {
   display: flex;
   gap: 13px;
 }
-.result-section .result-container svg {
+.tag-section .tag-container svg {
   fill: white;
   width: 20px;
   height: 20px;
   cursor: pointer;
 }
 
-#ingredientsResult {
+.ingredientsTag {
   background: rgb(50, 130, 247);
 }
 
-#appliancesResult {
+.appliancesTag {
   background: rgb(104, 217, 164);
 }
 
-#ustentilsResult {
+.ustentilsTag {
   background: rgb(237, 100, 84);
 }
 
@@ -177,6 +180,31 @@ h1 {
   display: flex;
   justify-content: flex-start;
   gap: 20px;
+  min-height: 110px;
+  max-height: 160px;
+}
+@media screen and (max-width: 1000px) {
+  .filter-section {
+    flex-direction: column;
+    align-items: center;
+    min-height: 290px;
+    max-height: 310px;
+  }
+  .filter-section .filter-container {
+    min-height: 70px;
+  }
+  .filter-section .keyWords {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10;
+  }
+  .filter-section #keyWords-1 {
+    z-index: 20;
+  }
+  .filter-section #keyWords-2 {
+    z-index: 15;
+  }
 }
 
 #btnKeywords-1 {
@@ -233,6 +261,10 @@ h1 {
   width: 69px;
   cursor: pointer;
 }
+.keyWords .keyWordsSearch-container .svg-container:hover svg {
+  transform: scale(1.5);
+  fill: black;
+}
 .keyWords .keyWordsSearch-container .svg-container svg {
   fill: white;
   width: 20px;
@@ -269,4 +301,85 @@ h1 {
 #keyWordsUstensils,
 #ustensilsList {
   background: rgb(237, 100, 84);
+}
+
+.recipes-section {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 50px;
+}
+@media screen and (max-width: 1460px) {
+  .recipes-section {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .recipes-section .recipes-container {
+    margin: 0 auto;
+  }
+}
+@media screen and (max-width: 1025px) {
+  .recipes-section {
+    grid-template-columns: repeat(1, 1fr);
+  }
+}
+.recipes-section .recipes-container {
+  width: 380px;
+  height: 364px;
+  border-radius: 5px;
+  background: rgb(231, 231, 231);
+}
+.recipes-section .recipes-container .img-container {
+  width: 100%;
+  height: 178px;
+  background: rgb(199, 190, 190);
+  border-radius: 5px 5px 0 0;
+}
+.recipes-section .recipes-container .content-container {
+  padding: 20px;
+}
+.recipes-section .recipes-container .content-container .recipe-title {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 20px;
+}
+.recipes-section .recipes-container .content-container .recipe-title h2 {
+  font-family: "font-1-regular", sans-serif;
+  font-size: 18px;
+  line-height: 21.6px;
+  font-weight: 400;
+}
+.recipes-section .recipes-container .content-container .recipe-title .recipe-time {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  font-family: "font-1-bold", sans-serif;
+  font-size: 18px;
+  line-height: 21.6px;
+  font-weight: 700;
+}
+.recipes-section .recipes-container .content-container .recipe-title .recipe-time svg {
+  height: 20px;
+  width: 20px;
+}
+.recipes-section .recipes-container .content-container .recipe-content {
+  display: grid;
+  grid-template-columns: repeat(2, 171px);
+  font-family: "font-1-regular", sans-serif;
+  font-size: 12px;
+  line-height: 14.4px;
+  font-weight: 400;
+}
+.recipes-section .recipes-container .content-container .recipe-content .recipe-ingredients .ingredient-description {
+  width: 171px;
+  display: flex;
+  flex-direction: column;
+}
+.recipes-section .recipes-container .content-container .recipe-content .recipe-description {
+  display: -webkit-box !important;
+  -webkit-line-clamp: 6;
+  -webkit-box-orient: vertical;
+  white-space: normal;
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }/*# sourceMappingURL=index.css.map */

@@ -42,10 +42,10 @@
           </button>
         </form>
       </section>
-  <!-- result keywords section  -->
-      <section class="result-section">
-        <div class="result-container" id="ingredientsResult">
-          <div class="result">Coco</div>
+      <!-- tag keywords section  -->
+      <section class="tag-section">
+        <div class="tag-container ingredientsTag">
+          <div class="tag">Coco</div>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path
               d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
@@ -53,8 +53,8 @@
           </svg>
         </div>
 
-                <div class="result-container" id="appliancesResult">
-          <div class="result">four micro-ondes</div>
+        <div class="tag-container appliancesTag">
+          <div class="tag">four micro-ondes</div>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path
               d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
@@ -62,16 +62,14 @@
           </svg>
         </div>
 
-                <div class="result-container" id="ustentilsResult">
-          <div class="result">blnder</div>
+        <div class="tag-container ustentilsTag">
+          <div class="tag">blnder</div>
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
             <path
               d="M175 175C184.4 165.7 199.6 165.7 208.1 175L255.1 222.1L303 175C312.4 165.7 327.6 165.7 336.1 175C346.3 184.4 346.3 199.6 336.1 208.1L289.9 255.1L336.1 303C346.3 312.4 346.3 327.6 336.1 336.1C327.6 346.3 312.4 346.3 303 336.1L255.1 289.9L208.1 336.1C199.6 346.3 184.4 346.3 175 336.1C165.7 327.6 165.7 312.4 175 303L222.1 255.1L175 208.1C165.7 199.6 165.7 184.4 175 175V175zM512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0C397.4 0 512 114.6 512 256zM256 48C141.1 48 48 141.1 48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48z"
             />
           </svg>
         </div>
-
-
       </section>
 
       <!-- filter section  -->
@@ -87,7 +85,7 @@
             </svg>
           </button>
           <!-- keywords list -->
-          <div class="keyWords">
+          <div class="keyWords hidden" id="keyWords-1">
             <div class="keyWordsSearch-container">
               <input
                 type="text"
@@ -96,7 +94,7 @@
                 placeholder="Rechercher un ingrédient"
                 autocomplete="off"
               />
-              <div class="svg-container">
+              <div class="svg-container" tabindex="0">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <path
                     d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"
@@ -123,7 +121,7 @@
             </svg>
           </button>
           <!-- keywords list -->
-          <div class="keyWords">
+          <div class="keyWords hidden" id="keyWords-2">
             <div class="keyWordsSearch-container">
               <input
                 type="text"
@@ -132,7 +130,7 @@
                 placeholder="Rechercher un appareil"
                 autocomplete="off"
               />
-              <div class="svg-container">
+              <div class="svg-container" tabindex="0">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <path
                     d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"
@@ -163,7 +161,7 @@
             </svg>
           </button>
           <!-- keywords list -->
-          <div class="keyWords">
+          <div class="keyWords hidden" id="keyWords-3">
             <div class="keyWordsSearch-container">
               <input
                 type="text"
@@ -172,7 +170,7 @@
                 placeholder="Rechercher un ustentile"
                 autocomplete="off"
               />
-              <div class="svg-container">
+              <div class="svg-container" tabindex="0">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
                   <path
                     d="M233.4 105.4c12.5-12.5 32.8-12.5 45.3 0l192 192c12.5 12.5 12.5 32.8 0 45.3s-32.8 12.5-45.3 0L256 173.3 86.6 342.6c-12.5 12.5-32.8 12.5-45.3 0s-12.5-32.8 0-45.3l192-192z"
@@ -192,6 +190,123 @@
             </ul>
           </div>
         </div>
+      </section>
+
+      <section class="recipes-section">
+        <div class="recipes-container">
+          <div class="img-container"></div>
+          <div class="content-container">
+            <div class="recipe-title">
+              <h2>Limonade de Coco</h2>
+              <span class="recipe-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z"/></svg>10 min</span>
+            </div>
+            <div class="recipe-content">
+           <div class="recipe-ingredients">
+            <span class="ingredient-description">Lait de coco: 400ml</span>
+            <span class="ingredient-description">Jus de citron: 2</span>
+            <span class="ingredient-description">Crème de coco: 4 cuillères</span>
+            <span class="ingredient-description">Sucre: 20g</span>
+            <span class="ingredient-description">Glaçons: 2</span>
+           </div>
+           <div class="recipe-description">
+            <p>Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouvez ajouter 1 à 2 cuillères à soupe de Crème de coco</p>
+           </div>
+            </div>
+          </div>
+        </div>
+
+         <div class="recipes-container">
+          <div class="img-container"></div>
+          <div class="content-container">
+            <div class="recipe-title">
+              <h2>Limonade de Coco</h2>
+              <span class="recipe-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z"/></svg>10 min</span>
+            </div>
+            <div class="recipe-content">
+           <div class="recipe-ingredients">
+            <span class="ingredient-description">Lait de coco: 400ml</span>
+            <span class="ingredient-description">Jus de citron: 2</span>
+            <span class="ingredient-description">Crème de coco: 4 cuillères</span>
+            <span class="ingredient-description">Sucre: 20g</span>
+            <span class="ingredient-description">Glaçons: 2</span>
+           </div>
+           <div class="recipe-description">
+            <p>Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouvez ajouter 1 à 2 cuillères à soupe de Crème de coco</p>
+           </div>
+            </div>
+          </div>
+        </div>
+
+         <div class="recipes-container">
+          <div class="img-container"></div>
+          <div class="content-container">
+            <div class="recipe-title">
+              <h2>Limonade de Coco</h2>
+              <span class="recipe-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z"/></svg>10 min</span>
+            </div>
+            <div class="recipe-content">
+           <div class="recipe-ingredients">
+            <span class="ingredient-description">Lait de coco: 400ml</span>
+            <span class="ingredient-description">Jus de citron: 2</span>
+            <span class="ingredient-description">Crème de coco: 4 cuillères</span>
+            <span class="ingredient-description">Sucre: 20g</span>
+            <span class="ingredient-description">Glaçons: 2</span>
+           </div>
+           <div class="recipe-description">
+            <p>Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouvez ajouter 1 à 2 cuillères à soupe de Crème de coco</p>
+           </div>
+            </div>
+          </div>
+        </div>
+
+         <div class="recipes-container">
+          <div class="img-container"></div>
+          <div class="content-container">
+            <div class="recipe-title">
+              <h2>Limonade de Coco</h2>
+              <span class="recipe-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z"/></svg>10 min</span>
+            </div>
+            <div class="recipe-content">
+           <div class="recipe-ingredients">
+            <span class="ingredient-description">Lait de coco: 400ml</span>
+            <span class="ingredient-description">Jus de citron: 2</span>
+            <span class="ingredient-description">Crème de coco: 4 cuillères</span>
+            <span class="ingredient-description">Sucre: 20g</span>
+            <span class="ingredient-description">Glaçons: 2</span>
+           </div>
+           <div class="recipe-description">
+            <p>Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouvez ajouter 1 à 2 cuillères à soupe de Crème de coco</p>
+           </div>
+            </div>
+          </div>
+        </div>
+ <div class="recipes-container">
+          <div class="img-container"></div>
+          <div class="content-container">
+            <div class="recipe-title">
+              <h2>Limonade de Coco</h2>
+              <span class="recipe-time">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><path d="M232 120C232 106.7 242.7 96 256 96C269.3 96 280 106.7 280 120V243.2L365.3 300C376.3 307.4 379.3 322.3 371.1 333.3C364.6 344.3 349.7 347.3 338.7 339.1L242.7 275.1C236 271.5 232 264 232 255.1L232 120zM256 0C397.4 0 512 114.6 512 256C512 397.4 397.4 512 256 512C114.6 512 0 397.4 0 256C0 114.6 114.6 0 256 0zM48 256C48 370.9 141.1 464 256 464C370.9 464 464 370.9 464 256C464 141.1 370.9 48 256 48C141.1 48 48 141.1 48 256z"/></svg>10 min</span>
+            </div>
+            <div class="recipe-content">
+           <div class="recipe-ingredients">
+            <span class="ingredient-description">Lait de coco: 400ml</span>
+            <span class="ingredient-description">Jus de citron: 2</span>
+            <span class="ingredient-description">Crème de coco: 4 cuillères</span>
+            <span class="ingredient-description">Sucre: 20g</span>
+            <span class="ingredient-description">Glaçons: 2</span>
+           </div>
+           <div class="recipe-description">
+            <p>Découper le thon en dés, mettre dans un plat et recouvrir de jus de citron vert (mieux vaut prendre un plat large et peu profond). Laisser reposer au réfrigérateur au moins 2 heures. (Si possible faites-le le soir pour le lendemain. Après avoir laissé mariner le poisson, coupez le concombre en fines rondelles sans la peau et les tomates en prenant soin de retirer les pépins. Rayer la carotte. Ajouter les légumes au poissons avec le citron cette fois ci dans un Saladier. Ajouter le lait de coco. Pour ajouter un peu plus de saveur vous pouvez ajouter 1 à 2 cuillères à soupe de Crème de coco</p>
+           </div>
+            </div>
+          </div>
+        </div>
+
       </section>
     </div>
 

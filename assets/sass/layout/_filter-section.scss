@@ -4,6 +4,33 @@
   display: flex;
   justify-content: flex-start;
   gap: 20px;
+  min-height: 110px;
+  max-height: 160px;
+
+  @media screen and (max-width: 1000px) {
+    flex-direction: column;
+    align-items: center;
+    min-height: 290px;
+    max-height: 310px;
+
+    .filter-container {
+      min-height: 70px;
+    }
+
+    .keyWords {
+      position: absolute;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 10;
+    }
+    #keyWords-1 {
+      z-index: 20;
+    }
+
+    #keyWords-2 {
+      z-index: 15;
+    }
+  }
 }
 
 #btnKeywords-1 {
@@ -52,6 +79,12 @@
       height: 69px;
       width: 69px;
       cursor: pointer;
+
+      &:hover svg {
+        transform: scale(1.5);
+        fill: black;
+      }
+
       svg {
         fill: white;
         width: 20px;
@@ -59,9 +92,10 @@
       }
     }
   }
+
   .keyWordsList {
     display: grid;
-    grid-template-rows: repeat(auto-fit,40px);
+    grid-template-rows: repeat(auto-fit, 40px);
     grid-auto-flow: column;
     max-width: 667px;
     max-height: 440px;

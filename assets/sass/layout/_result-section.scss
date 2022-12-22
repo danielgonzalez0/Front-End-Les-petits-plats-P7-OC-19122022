@@ -1,9 +1,9 @@
-.result-section {
+.tag-section {
   display: flex;
   gap: 20px;
   padding-top: 25px;
 
-  .result-container {
+  .tag-container {
     border-radius: 5px;
     padding: 10px 20px;
     color: white;
@@ -20,12 +20,12 @@
   }
 }
 
-#ingredientsResult {
+.ingredientsTag {
   background: $color2;
 }
-#appliancesResult {
+.appliancesTag {
   background: $color3;
 }
-#ustentilsResult {
+.ustentilsTag {
   background: $color1;
 }
