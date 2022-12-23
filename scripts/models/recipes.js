@@ -35,5 +35,4 @@ export class Recipes {
   get ustensils() {
     return this._ustensils;
   }
-
 }
