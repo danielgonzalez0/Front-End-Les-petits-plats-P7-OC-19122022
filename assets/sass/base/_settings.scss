@@ -7,7 +7,7 @@
 }
 
 body {
-  background:$color6;
+  background: $color6;
   display: flex;
   justify-content: center;
 }
@@ -66,5 +66,5 @@ input {
 }
 
 .hidden {
-  display: none;
+  display: none !important;
 }

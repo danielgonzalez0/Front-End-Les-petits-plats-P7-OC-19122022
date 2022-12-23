@@ -1,3 +1,4 @@
+import { TagArrayAdaptater } from '../adaptaters/tagArrayAdaptater.js';
 import { RecipesApi } from '../api/api.js';
 import { RecipesFactory } from '../factories/recipesFactory.js';
 import { closeTagList, openTagList, tagInit } from '../utils/tagForm.js';
@@ -87,15 +88,24 @@ async function init() {
   console.log(`Array created with all recipes datas: `);
   console.log(recipesArray[35]);
 
-  ingredientsArray = await getAllIngredients(recipesData);
-  appliancesArray = await getAllAppliances(recipesData);
-  ustensilsArray = await getAllUstentils(recipesData);
+  ingredientsArray = await new TagArrayAdaptater(
+    recipesData,
+    'ingredients'
+  ).getAlltagsAdaptater();
+  appliancesArray = await new TagArrayAdaptater(
+    recipesData,
+    'appliances'
+  ).getAlltagsAdaptater();
+  ustensilsArray = await new TagArrayAdaptater(
+    recipesData,
+    'ustentils'
+  ).getAlltagsAdaptater();
 
   //test
   console.log(`Array created with all ustentils: `);
   console.log(ustensilsArray);
 
-  //tag
+  //tag initialization
   await openTagList();
   await closeTagList();
   await tagInit(ingredientsArray, ingredientsTagList);
