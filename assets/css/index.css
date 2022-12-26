@@ -315,13 +315,11 @@ h1 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 50px;
+  justify-content: space-between;
 }
 @media screen and (max-width: 1460px) {
   .recipes-section {
     grid-template-columns: repeat(2, 1fr);
-  }
-  .recipes-section .recipes-container {
-    margin: 0 auto;
   }
 }
 @media screen and (max-width: 1025px) {
@@ -330,6 +328,7 @@ h1 {
   }
 }
 .recipes-section .recipes-container {
+  margin: 0 auto;
   width: 380px;
   height: 364px;
   border-radius: 5px;
@@ -360,6 +359,7 @@ h1 {
   justify-content: center;
   align-items: center;
   gap: 5px;
+  min-width: 100px;
   font-family: "font-1-bold", sans-serif;
   font-size: 18px;
   line-height: 21.6px;
@@ -377,12 +377,20 @@ h1 {
   line-height: 14.4px;
   font-weight: 400;
 }
-.recipes-section .recipes-container .content-container .recipe-content .recipe-ingredients .ingredient-description {
-  width: 171px;
+.recipes-section .recipes-container .content-container .recipe-content .recipe-ingredients {
+  display: flex;
+  flex-direction: column;
   display: flex;
   flex-direction: column;
 }
-.recipes-section .recipes-container .content-container .recipe-content .recipe-description {
+.recipes-section .recipes-container .content-container .recipe-content .recipe-ingredients .ingredient-description {
+  width: 150px;
+  white-space: nowrap;
+  text-align: start;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.recipes-section .recipes-container .content-container .recipe-content .recipe-description p {
   display: -webkit-box !important;
   -webkit-line-clamp: 6;
   -webkit-box-orient: vertical;

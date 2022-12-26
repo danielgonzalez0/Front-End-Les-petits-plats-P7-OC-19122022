@@ -9,7 +9,10 @@ export class RecipesCard {
     this.recipe.ingredients.forEach((ingredient) => {
       div.innerHTML += `
       <span class="ingredient-description">
-        ${ingredient.ingredient} ${ingredient.quantity} ${
+        ${ingredient.ingredient} ${
+        !ingredient.quantity && !ingredient.unit ? '' : ':'
+      }
+         ${ingredient.quantity ? ingredient.quantity : ''} ${
         ingredient.unit ? ingredient.unit : ''
       }</span>
         `;
@@ -21,7 +24,7 @@ export class RecipesCard {
   createIngredientsDescriptionCards() {
     const div = document.createElement('div');
     div.classList.add('recipe-description');
-      div.innerHTML += `
+    div.innerHTML += `
       <p>
         ${this.recipe.description}</p>
         `;
@@ -53,7 +56,7 @@ export class RecipesCard {
     element.innerHTML = recipeCard;
     const ingredientsElement = element.querySelector('.recipe-content');
     ingredientsElement.appendChild(this.createIngredientsListCards());
-        ingredientsElement.appendChild(this.createIngredientsDescriptionCards());
+    ingredientsElement.appendChild(this.createIngredientsDescriptionCards());
     return element;
   }
 }
