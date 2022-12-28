@@ -13,8 +13,8 @@ export class TagArrayAdaptater {
     let ingredientsList = [];
     this.array.forEach((index) => {
       index.ingredients.forEach((ingredient) => {
-        if (!ingredientsList.includes(ingredient.ingredient)) {
-          ingredientsList.push(ingredient.ingredient);
+        if (!ingredientsList.includes(ingredient.ingredient.toLowerCase())) {
+          ingredientsList.push(ingredient.ingredient.toLowerCase());
         }
       });
     });
@@ -29,8 +29,8 @@ export class TagArrayAdaptater {
   async getAllAppliances() {
     let appliancesList = [];
     this.array.forEach((index) => {
-      if (!appliancesList.includes(index.appliance)) {
-        appliancesList.push(index.appliance);
+      if (!appliancesList.includes(index.appliance.toLowerCase())) {
+        appliancesList.push(index.appliance.toLowerCase());
       }
     });
     return appliancesList;
@@ -45,8 +45,8 @@ export class TagArrayAdaptater {
     let ustensilList = [];
     this.array.forEach((index) => {
       index.ustensils.forEach((ustentil) => {
-        if (!ustensilList.includes(ustentil)) {
-          ustensilList.push(ustentil);
+        if (!ustensilList.includes(ustentil.toLowerCase())) {
+          ustensilList.push(ustentil.toLowerCase());
         }
       });
     });
