@@ -2,6 +2,7 @@ import { TagArrayAdaptater } from '../adaptaters/tagArrayAdaptater.js';
 import { RecipesApi } from '../api/api.js';
 import { RecipesFactory } from '../factories/recipesFactory.js';
 import { RecipesCard } from '../templates/recipesCard.js';
+import { searchRecipesByKeywords } from '../utils/searchByKeywords.js';
 import { closeTagList, openTagList, tagInit } from '../utils/tagForm.js';
 
 export let recipesArray = [];
@@ -12,6 +13,8 @@ const ingredientsTagList = document.getElementById('ingredientsList');
 const appliancesTagList = document.getElementById('appliancesList');
 const ustensilsTagList = document.getElementById('ustensilsList');
 const recipesSection = document.querySelector('.recipes-section');
+const searchBar = document.getElementById('searchbar');
+console.log(searchBar);
 
 /**
  * create an array with all the recipes datas
@@ -31,7 +34,6 @@ async function arrayCreation(array) {
 async function displayRecipesCard(array) {
   array.forEach((recipeData) => {
     const recipeCard = new RecipesCard(recipeData).createRecipeCard();
-    console.log(recipeCard);
     recipesSection.appendChild(recipeCard);
   });
 }
@@ -44,12 +46,7 @@ async function init() {
   const recipes = new RecipesApi('./assets/data/recipes.json');
   const recipesData = await recipes.getRecipesData();
 
-  //test
-  console.log(`data from Json file: `);
-  console.log(recipesData);
   recipesArray = await arrayCreation(recipesData);
-  console.log(recipesArray);
-
   ingredientsArray = await new TagArrayAdaptater(
     recipesData,
     'ingredients'
@@ -64,10 +61,6 @@ async function init() {
   ).getAlltagsAdaptater();
   await displayRecipesCard(recipesArray);
 
-  //test
-  console.log(`Array created with all ustentils: `);
-  console.log(ustensilsArray);
-
   //tag initialization
   await openTagList();
   await closeTagList();
@@ -77,3 +70,10 @@ async function init() {
 }
 
 init();
+
+//event listener
+
+//searchbar
+searchBar.addEventListener('input', (e) => {
+  searchRecipesByKeywords(e.target.value, recipesArray);
+});

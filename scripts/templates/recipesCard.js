@@ -17,7 +17,6 @@ export class RecipesCard {
       }</span>
         `;
     });
-    console.log(div);
     return div;
   }
 
@@ -28,7 +27,6 @@ export class RecipesCard {
       <p>
         ${this.recipe.description}</p>
         `;
-    console.log(div);
     return div;
   }
 

@@ -29,6 +29,12 @@ body {
   min-width: 80%;
   max-width: 1240px;
 }
+@media screen and (max-width: 500px) {
+  .wrapper {
+    margin: 0;
+    width: 100%;
+  }
+}
 
 li,
 a {
@@ -282,6 +288,16 @@ h1 {
   padding-bottom: 10px;
   border-radius: 0 0 5px 5px;
 }
+@media screen and (max-width: 750px) {
+  .keyWords .keyWordsList {
+    max-width: 445px;
+  }
+}
+@media screen and (max-width: 500px) {
+  .keyWords .keyWordsList {
+    max-width: 271px;
+  }
+}
 .keyWords .keyWordsList li {
   position: relative;
   width: 223px;
@@ -291,6 +307,11 @@ h1 {
   font-size: 18px;
   cursor: pointer;
   transition: ease-in-out 0.3s;
+}
+@media screen and (max-width: 500px) {
+  .keyWords .keyWordsList li {
+    width: 271px;
+  }
 }
 .keyWords .keyWordsList li:hover {
   color: black;
