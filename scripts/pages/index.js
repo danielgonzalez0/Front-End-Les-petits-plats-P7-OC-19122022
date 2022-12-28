@@ -14,7 +14,6 @@ const appliancesTagList = document.getElementById('appliancesList');
 const ustensilsTagList = document.getElementById('ustensilsList');
 const recipesSection = document.querySelector('.recipes-section');
 const searchBar = document.getElementById('searchbar');
-console.log(searchBar);
 
 /**
  * create an array with all the recipes datas
@@ -29,6 +28,26 @@ async function arrayCreation(array) {
     newArray.push(recipesModel);
   });
   return newArray;
+}
+
+/**
+ * fill all tag arrays according to the liqt of recipes
+ * @param {object} array array with the list of recipes
+ */
+
+async function tagsArrayUpdate(array) {
+  ingredientsArray = await new TagArrayAdaptater(
+    array,
+    'ingredients'
+  ).getAlltagsAdaptater();
+  appliancesArray = await new TagArrayAdaptater(
+    array,
+    'appliances'
+  ).getAlltagsAdaptater();
+  ustensilsArray = await new TagArrayAdaptater(
+    array,
+    'ustentils'
+  ).getAlltagsAdaptater();
 }
 
 async function displayRecipesCard(array) {
@@ -47,18 +66,7 @@ async function init() {
   const recipesData = await recipes.getRecipesData();
 
   recipesArray = await arrayCreation(recipesData);
-  ingredientsArray = await new TagArrayAdaptater(
-    recipesData,
-    'ingredients'
-  ).getAlltagsAdaptater();
-  appliancesArray = await new TagArrayAdaptater(
-    recipesData,
-    'appliances'
-  ).getAlltagsAdaptater();
-  ustensilsArray = await new TagArrayAdaptater(
-    recipesData,
-    'ustentils'
-  ).getAlltagsAdaptater();
+  await tagsArrayUpdate(recipesArray);
   await displayRecipesCard(recipesArray);
 
   //tag initialization
@@ -75,5 +83,31 @@ init();
 
 //searchbar
 searchBar.addEventListener('input', (e) => {
-  searchRecipesByKeywords(e.target.value, recipesArray);
+  e.preventDefault();
+  let result = searchRecipesByKeywords(e.target.value, recipesArray);
+  //remove all recipes card & tags list
+  recipesSection.innerHTML = '';
+  ingredientsTagList.innerHTML = '';
+  //check if result is empty or undefined
+  if ((result && result.length === 0) || !result) {
+    const errorMessage = ` Aucune recette ne correspond à votre critère… vous pouvez
+chercher « tarte aux pommes », « poisson », etc.
+`;
+    recipesSection.innerHTML = `<p class="error-message"> ${errorMessage}</p>
+  `;
+  } else {
+    displayRecipesCard(result);
+    tagsArrayUpdate(result);
+    tagInit(ingredientsArray, ingredientsTagList);
+    tagInit(appliancesArray, appliancesTagList);
+    tagInit(ustensilsArray, ustensilsTagList);
+    recipesArray = result;
+  }
+});
+
+searchBar.addEventListener('keydown', (e) => {
+  if (searchBar.value !== '' && e.keyCode === 13) {
+    e.preventDefault();
+    console.log(recipesArray);
+  }
 });

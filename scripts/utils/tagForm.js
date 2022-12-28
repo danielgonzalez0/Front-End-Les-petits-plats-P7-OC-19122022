@@ -1,4 +1,3 @@
-
 const tagBtn = document.querySelectorAll('.filter-btn');
 const svgTagList = document.querySelectorAll('.svg-container');
 
@@ -31,7 +30,6 @@ export const closeTagList = () => {
   });
 };
 
-
 /**
  * create a tag list and append it to the DOM
  * @param {array} tagArray array with the tag list
@@ -39,6 +37,7 @@ export const closeTagList = () => {
  */
 
 export async function tagInit(tagArray, tagListElement) {
+  tagListElement.innerHTML = '';
   tagArray.forEach((tag) => {
     const element = document.createElement('li');
     element.setAttribute('tabindex', 0);

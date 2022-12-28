@@ -338,6 +338,16 @@ h1 {
   gap: 50px;
   justify-content: space-between;
 }
+.recipes-section .error-message {
+  font-size: 2em;
+  width: 80vw !important;
+  margin: 0 auto;
+  text-align: center;
+  font-style: oblique;
+  font-family: "font-1-regular", sans-serif;
+  line-height: 50px;
+  padding-top: 50px;
+}
 @media screen and (max-width: 1460px) {
   .recipes-section {
     grid-template-columns: repeat(2, 1fr);
