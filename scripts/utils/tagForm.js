@@ -42,6 +42,7 @@ export async function tagInit(tagArray, tagListElement) {
     const element = document.createElement('li');
     element.setAttribute('tabindex', 0);
     element.setAttribute('data-tagName', tag);
+    element.setAttribute('data-tagType', tagListElement.id);
     element.textContent = tag;
     tagListElement.appendChild(element);
   });

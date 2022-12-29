@@ -168,6 +168,9 @@ h1 {
   height: 20px;
   cursor: pointer;
 }
+.tag-section .tag-container path {
+  pointer-events: none;
+}
 
 .ingredientsTag {
   background: rgb(50, 130, 247);
@@ -177,7 +180,7 @@ h1 {
   background: rgb(104, 217, 164);
 }
 
-.ustentilsTag {
+.ustensilsTag {
   background: rgb(237, 100, 84);
 }
 

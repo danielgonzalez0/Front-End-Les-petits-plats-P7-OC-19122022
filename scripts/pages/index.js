@@ -4,14 +4,15 @@ import { RecipesFactory } from '../factories/recipesFactory.js';
 import { RecipesCard } from '../templates/recipesCard.js';
 import { searchRecipesByKeywords } from '../utils/searchByKeywords.js';
 import { closeTagList, openTagList, tagInit } from '../utils/tagForm.js';
+import { userSelectTagInTagList } from '../utils/tagListFunctions.js';
 
 export let recipesArray = [];
 export let ingredientsArray = [];
 export let appliancesArray = [];
 export let ustensilsArray = [];
-const ingredientsTagList = document.getElementById('ingredientsList');
-const appliancesTagList = document.getElementById('appliancesList');
-const ustensilsTagList = document.getElementById('ustensilsList');
+export const ingredientsTagList = document.getElementById('ingredientsList');
+export const appliancesTagList = document.getElementById('appliancesList');
+export const ustensilsTagList = document.getElementById('ustensilsList');
 const recipesSection = document.querySelector('.recipes-section');
 const searchBar = document.getElementById('searchbar');
 
@@ -31,7 +32,7 @@ async function arrayCreation(array) {
 }
 
 /**
- * fill all tag arrays according to the liqt of recipes
+ * fill all tag arrays according to the list of recipes
  * @param {object} array array with the list of recipes
  */
 
@@ -75,6 +76,10 @@ async function init() {
   await tagInit(ingredientsArray, ingredientsTagList);
   await tagInit(appliancesArray, appliancesTagList);
   await tagInit(ustensilsArray, ustensilsTagList);
+
+  await userSelectTagInTagList(ingredientsTagList);
+  await userSelectTagInTagList(appliancesTagList);
+  await userSelectTagInTagList(ustensilsTagList);
 }
 
 init();
@@ -88,6 +93,8 @@ searchBar.addEventListener('input', (e) => {
   //remove all recipes card & tags list
   recipesSection.innerHTML = '';
   ingredientsTagList.innerHTML = '';
+  appliancesTagList.innerHTML = '';
+  ustensilsTagList.innerHTML = '';
   //check if result is empty or undefined
   if ((result && result.length === 0) || !result) {
     const errorMessage = ` Aucune recette ne correspond à votre critère… vous pouvez
@@ -111,3 +118,5 @@ searchBar.addEventListener('keydown', (e) => {
     console.log(recipesArray);
   }
 });
+
+

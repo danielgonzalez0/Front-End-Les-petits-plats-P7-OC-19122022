@@ -5,7 +5,6 @@
   padding-top: 25px;
 
   @media screen and (max-width: 1000px) {
-    
   }
 
   .tag-container {
@@ -22,6 +21,9 @@
       height: 20px;
       cursor: pointer;
     }
+    path {
+      pointer-events: none;
+    }
   }
 }
 
@@ -31,6 +33,6 @@
 .appliancesTag {
   background: $color3;
 }
-.ustentilsTag {
+.ustensilsTag {
   background: $color1;
 }
