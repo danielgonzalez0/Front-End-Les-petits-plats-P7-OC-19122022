@@ -37,11 +37,16 @@ export class RecipesApi extends Api {
   }
 
   /**
-   * get all recipes information data
+   * get all recipes information data & creates an array with all recipes
+   * @returns an array with all the recipes datas
    */
 
   async getRecipesData() {
     const data = await this.getDatafromApi();
-    return data.recipes;
+    let newArray = [];
+    data.recipes.forEach((recipe) => {
+      newArray.push(recipe);
+    });
+    return newArray;
   }
 }

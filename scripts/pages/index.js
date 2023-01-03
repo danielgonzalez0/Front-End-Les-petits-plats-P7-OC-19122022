@@ -16,20 +16,10 @@ export const ustensilsTagList = document.getElementById('ustensilsList');
 const recipesSection = document.querySelector('.recipes-section');
 const searchBar = document.getElementById('searchbar');
 
-/**
- * create an array with all the recipes datas
- * @param {array} array with the recipes datas from the API
- * @returns an array with all the recipes datas
- */
-
-async function arrayCreation(array) {
-  let newArray = [];
-  array.forEach((index) => {
-    const recipesModel = new RecipesFactory(index, 'json');
-    newArray.push(recipesModel);
-  });
-  return newArray;
-}
+export const fetchDataRecipes = async () => {
+  const recipes = new RecipesApi('./assets/data/recipes.json');
+  recipesArray = await recipes.getRecipesData();
+};
 
 /**
  * fill all tag arrays according to the list of recipes
@@ -63,10 +53,7 @@ async function displayRecipesCard(array) {
  */
 
 async function init() {
-  const recipes = new RecipesApi('./assets/data/recipes.json');
-  const recipesData = await recipes.getRecipesData();
-
-  recipesArray = await arrayCreation(recipesData);
+  await fetchDataRecipes();
   await tagsArrayUpdate(recipesArray);
   await displayRecipesCard(recipesArray);
 
@@ -89,9 +76,7 @@ init();
 searchBar.addEventListener('input', async (e) => {
   e.preventDefault();
 
-  const recipes = new RecipesApi('./assets/data/recipes.json');
-  const recipesData = await recipes.getRecipesData();
-  recipesArray = await arrayCreation(recipesData);
+  await fetchDataRecipes();
 
   let result = searchRecipesByKeywords(e.target.value, recipesArray);
   //remove all recipes card & tags list
@@ -101,7 +86,7 @@ searchBar.addEventListener('input', async (e) => {
   ustensilsTagList.innerHTML = '';
   //check if result is empty or undefined
   if (e.target.value.length < 3) {
-    return recipesArray;
+    result = recipesArray;
   }
   if ((result && result.length === 0) || !result) {
     const errorMessage = ` Aucune recette ne correspond à votre critère… vous pouvez
@@ -109,17 +94,16 @@ chercher « tarte aux pommes », « poisson », etc.
 `;
     recipesSection.innerHTML = `<p class="error-message"> ${errorMessage}</p>
   `;
-  } else {
-    displayRecipesCard(result);
-    tagsArrayUpdate(result);
-    tagInit(ingredientsArray, ingredientsTagList);
-    tagInit(appliancesArray, appliancesTagList);
-    tagInit(ustensilsArray, ustensilsTagList);
-    userSelectTagInTagList(ingredientsTagList);
-    userSelectTagInTagList(appliancesTagList);
-    userSelectTagInTagList(ustensilsTagList);
-    recipesArray = result;
   }
+  displayRecipesCard(result);
+  tagsArrayUpdate(result);
+  tagInit(ingredientsArray, ingredientsTagList);
+  tagInit(appliancesArray, appliancesTagList);
+  tagInit(ustensilsArray, ustensilsTagList);
+  userSelectTagInTagList(ingredientsTagList);
+  userSelectTagInTagList(appliancesTagList);
+  userSelectTagInTagList(ustensilsTagList);
+  recipesArray = result;
 });
 
 searchBar.addEventListener('keydown', (e) => {
