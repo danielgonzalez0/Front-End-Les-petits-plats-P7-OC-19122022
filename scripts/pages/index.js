@@ -76,7 +76,6 @@ async function init() {
   await tagInit(ingredientsArray, ingredientsTagList);
   await tagInit(appliancesArray, appliancesTagList);
   await tagInit(ustensilsArray, ustensilsTagList);
-
   await userSelectTagInTagList(ingredientsTagList);
   await userSelectTagInTagList(appliancesTagList);
   await userSelectTagInTagList(ustensilsTagList);
@@ -87,8 +86,13 @@ init();
 //event listener
 
 //searchbar
-searchBar.addEventListener('input', (e) => {
+searchBar.addEventListener('input', async (e) => {
   e.preventDefault();
+
+  const recipes = new RecipesApi('./assets/data/recipes.json');
+  const recipesData = await recipes.getRecipesData();
+  recipesArray = await arrayCreation(recipesData);
+
   let result = searchRecipesByKeywords(e.target.value, recipesArray);
   //remove all recipes card & tags list
   recipesSection.innerHTML = '';
@@ -96,6 +100,9 @@ searchBar.addEventListener('input', (e) => {
   appliancesTagList.innerHTML = '';
   ustensilsTagList.innerHTML = '';
   //check if result is empty or undefined
+  if (e.target.value.length < 3) {
+    return recipesArray;
+  }
   if ((result && result.length === 0) || !result) {
     const errorMessage = ` Aucune recette ne correspond à votre critère… vous pouvez
 chercher « tarte aux pommes », « poisson », etc.
@@ -108,6 +115,9 @@ chercher « tarte aux pommes », « poisson », etc.
     tagInit(ingredientsArray, ingredientsTagList);
     tagInit(appliancesArray, appliancesTagList);
     tagInit(ustensilsArray, ustensilsTagList);
+    userSelectTagInTagList(ingredientsTagList);
+    userSelectTagInTagList(appliancesTagList);
+    userSelectTagInTagList(ustensilsTagList);
     recipesArray = result;
   }
 });
@@ -118,5 +128,3 @@ searchBar.addEventListener('keydown', (e) => {
     console.log(recipesArray);
   }
 });
-
-
