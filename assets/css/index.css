@@ -109,6 +109,12 @@ h1 {
 .search-section {
   position: relative;
 }
+@media screen and (max-width: 500px) {
+  .search-section {
+    width: 380px;
+    margin: 0 auto;
+  }
+}
 .search-section #searchbar {
   width: 100%;
   background: rgb(199, 190, 190);
@@ -298,7 +304,7 @@ h1 {
 }
 @media screen and (max-width: 500px) {
   .keyWords .keyWordsList {
-    max-width: 271px;
+    max-width: 380px;
   }
 }
 .keyWords .keyWordsList li {
@@ -313,7 +319,8 @@ h1 {
 }
 @media screen and (max-width: 500px) {
   .keyWords .keyWordsList li {
-    width: 271px;
+    width: 380px;
+    text-align: center;
   }
 }
 .keyWords .keyWordsList li:hover {

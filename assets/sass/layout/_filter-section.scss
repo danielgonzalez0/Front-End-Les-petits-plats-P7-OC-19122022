@@ -109,7 +109,7 @@
     }
 
     @media screen and (max-width: 500px) {
-      max-width: 271px;
+      max-width: 380px;
     }
     li {
       position: relative;
@@ -121,7 +121,8 @@
       cursor: pointer;
       transition: ease-in-out 0.3s;
       @media screen and (max-width: 500px) {
-        width: 271px;
+        width: 380px;
+        text-align: center;
       }
 
       &:hover {

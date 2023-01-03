@@ -1,5 +1,9 @@
 .search-section {
   position: relative;
+      @media screen and (max-width: 500px) {
+      width: 380px;
+      margin: 0 auto;
+    }
   #searchbar {
     width: 100%;
     background: $color5;
@@ -8,6 +12,8 @@
     font-family: $font-1-regular;
     font-size: 18px;
     padding-left: 24px;
+
+
 
     &:hover {
       outline: solid 2px $color1;
