@@ -2,9 +2,6 @@ import { TagCardAdaptater } from '../adaptaters/tagCardAdaptater.js';
 // import { ingredientsTagList } from '../pages/index.js';
 
 //variables declaration
-// const ingredientsTagInput = document.getElementById('keyWordsIngredients');
-// const appliancesTagInput = document.getElementById('keyWordsAppliances');
-// const ustentilsTagInput = document.getElementById('keyWordsUstensils');
 const tagSection = document.querySelector('.tag-section');
 
 /**

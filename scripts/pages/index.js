@@ -2,7 +2,11 @@ import { TagArrayAdaptater } from '../adaptaters/tagArrayAdaptater.js';
 import { RecipesApi } from '../api/api.js';
 import { RecipesFactory } from '../factories/recipesFactory.js';
 import { RecipesCard } from '../templates/recipesCard.js';
-import { searchRecipesByKeywords } from '../utils/searchByKeywords.js';
+import {
+  searchByIngredients,
+  searchByTags,
+  searchRecipesByKeywords,
+} from '../utils/searchByKeywords.js';
 import { closeTagList, openTagList, tagInit } from '../utils/tagForm.js';
 import { userSelectTagInTagList } from '../utils/tagListFunctions.js';
 
@@ -10,9 +14,13 @@ export let recipesArray = [];
 export let ingredientsArray = [];
 export let appliancesArray = [];
 export let ustensilsArray = [];
+let updatedRecipesArray = []
 export const ingredientsTagList = document.getElementById('ingredientsList');
 export const appliancesTagList = document.getElementById('appliancesList');
 export const ustensilsTagList = document.getElementById('ustensilsList');
+const ingredientsTagInput = document.getElementById('keyWordsIngredients');
+const appliancesTagInput = document.getElementById('keyWordsAppliances');
+const ustentilsTagInput = document.getElementById('keyWordsUstensils');
 const recipesSection = document.querySelector('.recipes-section');
 const searchBar = document.getElementById('searchbar');
 
@@ -111,4 +119,29 @@ searchBar.addEventListener('keydown', (e) => {
     e.preventDefault();
     console.log(recipesArray);
   }
+});
+
+//tag
+ingredientsTagInput.addEventListener('input', async (e) => {
+  //remove all recipes card & tags list
+    recipesSection.innerHTML = '';
+  ingredientsTagList.innerHTML = '';
+  appliancesTagList.innerHTML = '';
+  ustensilsTagList.innerHTML = '';
+  //variables
+  let userTag = e.target.value;
+  let tagListResult = [];
+  //update tag list
+  tagListResult = searchByTags(userTag, ingredientsArray);
+  tagInit(tagListResult, ingredientsTagList);
+  userSelectTagInTagList(ingredientsTagList);
+  //search with the tag list result
+  updatedRecipesArray  = searchByIngredients(userTag, tagListResult, recipesArray);
+
+  displayRecipesCard(updatedRecipesArray);
+  tagsArrayUpdate(updatedRecipesArray);
+  tagInit(appliancesArray, appliancesTagList);
+  tagInit(ustensilsArray, ustensilsTagList);
+  userSelectTagInTagList(appliancesTagList);
+  userSelectTagInTagList(ustensilsTagList);
 });
