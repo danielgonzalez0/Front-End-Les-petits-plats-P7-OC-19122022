@@ -111,6 +111,12 @@
     @media screen and (max-width: 500px) {
       max-width: 380px;
     }
+
+    span {
+      font-family: $font-1-regular;
+      font-size: 18px;
+      padding: 0 20px;
+    }
     li {
       position: relative;
       width: 223px;

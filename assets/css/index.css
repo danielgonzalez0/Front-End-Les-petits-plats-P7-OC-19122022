@@ -307,6 +307,11 @@ h1 {
     max-width: 380px;
   }
 }
+.keyWords .keyWordsList span {
+  font-family: "font-1-regular", sans-serif;
+  font-size: 18px;
+  padding: 0 20px;
+}
 .keyWords .keyWordsList li {
   position: relative;
   width: 223px;
