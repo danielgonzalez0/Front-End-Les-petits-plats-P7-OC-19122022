@@ -2,11 +2,8 @@ import { TagArrayAdaptater } from '../adaptaters/tagArrayAdaptater.js';
 import { TagCardAdaptater } from '../adaptaters/tagCardAdaptater.js';
 import { RecipesApi } from '../api/api.js';
 import { RecipesCard } from '../templates/recipesCard.js';
-import {
-  searchByIngredients,
-  searchByTags,
-  searchRecipesByKeywords,
-} from '../utils/searchByKeywords.js';
+import { searchAll } from '../utils/searchAll.js';
+import { searchByTags } from '../utils/searchByTags.js';
 import { closeTagList, openTagList, tagInit } from '../utils/tagForm.js';
 import {
   closeTaginTagSelection,
@@ -29,7 +26,7 @@ export const ingredientsTagInput = document.getElementById(
 export const appliancesTagInput = document.getElementById('keyWordsAppliances');
 export const ustensilsTagInput = document.getElementById('keyWordsUstensils');
 export const recipesSection = document.querySelector('.recipes-section');
-const searchBar = document.getElementById('searchbar');
+export const searchBar = document.getElementById('searchbar');
 
 export const fetchDataRecipes = async () => {
   const recipes = new RecipesApi('./assets/data/recipes.json');
@@ -127,19 +124,26 @@ init();
 //searchbar
 searchBar.addEventListener('input', async (e) => {
   e.preventDefault();
-  await fetchDataRecipes();
-
-  let result = searchRecipesByKeywords(e.target.value, recipesArray);
-  //remove all recipes card & tags list
-  removeDOMElements();
-  //check if result is empty or undefined
-  if (e.target.value.length < 3) {
-    result = recipesArray;
+  if (e.target.value.length >= 3) {
+    // result = recipesArray;
+    await fetchDataRecipes();
+    recipesArray = await searchAll();
+    //remove all recipes card & tags list
+    if (recipesArray.length > 0) {
+      removeDOMElements();
+      await displayRecipesCard(recipesArray);
+      await displayTagsCard(recipesArray);
+    } else {
+      removeDOMElements();
+      await displayErrorMessageWhenNoRecipes(recipesArray);
+    }
+  } else {
+    await fetchDataRecipes();
+   let resultIfTagsSelected= await searchAll()
+    removeDOMElements();
+    await displayRecipesCard(resultIfTagsSelected);
+    await displayTagsCard(resultIfTagsSelected);
   }
-  displayErrorMessageWhenNoRecipes(result);
-  displayRecipesCard(result);
-  displayTagsCard(result);
-  recipesArray = result;
 });
 
 searchBar.addEventListener('keydown', (e) => {
@@ -182,6 +186,10 @@ ingredientsTagInput.addEventListener('keydown', async (e) => {
         'ingredientsList'
       ).createTagCardbyType();
       tagSection.appendChild(tagElement);
+
+      let tagsSelectedArray = await tagListRecuperationForSearchByTag();
+      console.log(tagsSelectedArray);
+
       //listener in case user close the selected tag
       closeTaginTagSelection();
       e.target.value = '';
@@ -222,6 +230,10 @@ appliancesTagInput.addEventListener('keydown', async (e) => {
         'appliancesList'
       ).createTagCardbyType();
       tagSection.appendChild(tagElement);
+
+      let tagsSelectedArray = await tagListRecuperationForSearchByTag();
+      console.log(tagsSelectedArray);
+
       //listener in case user close the selected tag
       closeTaginTagSelection();
       e.target.value = '';
@@ -262,6 +274,9 @@ ustensilsTagInput.addEventListener('keydown', async (e) => {
         'ustensilsList'
       ).createTagCardbyType();
       tagSection.appendChild(tagElement);
+      let tagsSelectedArray = await tagListRecuperationForSearchByTag();
+      console.log(tagsSelectedArray);
+
       //listener in case user close the selected tag
       closeTaginTagSelection();
       e.target.value = '';

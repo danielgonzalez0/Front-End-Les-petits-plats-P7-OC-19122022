@@ -22,7 +22,7 @@ export class TagCardAdaptater {
       case 'ustensilsList':
         div.classList.add('ustensilsTag');
         div.setAttribute('data-tagName', this.tag);
-        div.setAttribute('data-tagType', 'ustentils');
+        div.setAttribute('data-tagType', 'ustensils');
         return div;
       default:
         console.log(`error: tagType undefined`);
