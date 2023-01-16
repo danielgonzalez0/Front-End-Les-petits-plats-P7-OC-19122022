@@ -45,6 +45,14 @@
           font-size: 18px;
           line-height: 21.6px;
           font-weight: 400;
+
+          @media screen and (max-width: 1000px) {
+            font-size: 22px;
+          }
+
+          @media screen and (max-width: 600px) {
+            font-size: 18px;
+          }
         }
         .recipe-time {
           display: flex;
@@ -74,8 +82,7 @@
         .recipe-ingredients {
           display: flex;
           flex-direction: column;
-          display: flex;
-          flex-direction: column;
+
           .ingredient-description {
             width: 150px;
             white-space: nowrap;
@@ -95,7 +102,29 @@
             text-overflow: ellipsis;
           }
         }
+
+        @media screen and (max-width: 1000px) {
+          grid-template-columns: repeat(2, 50%);
+          font-size: 15px;
+          font-weight: 400;
+
+          .recipe-ingredients {
+            .ingredient-description {
+              width: 90%;
+            }
+          }
+        }
+        @media screen and (max-width: 600px) {
+          font-size: 12px;
+        }
       }
+    }
+    @media screen and (max-width: 1000px) {
+      width: 100%;
+      max-width: 100%;
+    }
+    @media screen and (max-width: 500px) {
+      width: 380px;
     }
   }
 } //end recipes-section

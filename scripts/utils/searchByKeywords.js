@@ -4,7 +4,6 @@
  * @param {object} recipesArray array with all the recipes come from the API
  * @returns an array with the search result
  */
-
 export function searchRecipesByKeywords(keyword, recipesArray) {
   if (keyword.length >= 3) {
     let resultSearchArray = [];

@@ -73,6 +73,18 @@ input {
   border: none;
   cursor: pointer;
 }
+@media screen and (max-width: 1025px) {
+  .filter-btn {
+    justify-content: center;
+    gap: 10px;
+  }
+  .filter-btn svg {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    right: 20px;
+  }
+}
 .filter-btn svg {
   fill: white;
   width: 20px;
@@ -205,9 +217,14 @@ h1 {
     align-items: center;
     min-height: 290px;
     max-height: 310px;
+    padding: 0 0 50px;
   }
   .filter-section .filter-container {
     min-height: 70px;
+    width: 100%;
+  }
+  .filter-section .filter-btn {
+    width: 100%;
   }
   .filter-section .keyWords {
     position: absolute;
@@ -220,6 +237,12 @@ h1 {
   }
   .filter-section #keyWords-2 {
     z-index: 15;
+  }
+}
+@media screen and (max-width: 500px) {
+  .filter-section {
+    width: 380px;
+    margin: 0 auto;
   }
 }
 
@@ -400,6 +423,16 @@ h1 {
   line-height: 21.6px;
   font-weight: 400;
 }
+@media screen and (max-width: 1000px) {
+  .recipes-section .recipes-container .content-container .recipe-title h2 {
+    font-size: 22px;
+  }
+}
+@media screen and (max-width: 600px) {
+  .recipes-section .recipes-container .content-container .recipe-title h2 {
+    font-size: 18px;
+  }
+}
 .recipes-section .recipes-container .content-container .recipe-title .recipe-time {
   display: flex;
   justify-content: center;
@@ -426,8 +459,6 @@ h1 {
 .recipes-section .recipes-container .content-container .recipe-content .recipe-ingredients {
   display: flex;
   flex-direction: column;
-  display: flex;
-  flex-direction: column;
 }
 .recipes-section .recipes-container .content-container .recipe-content .recipe-ingredients .ingredient-description {
   width: 150px;
@@ -444,4 +475,30 @@ h1 {
   text-align: start;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+@media screen and (max-width: 1000px) {
+  .recipes-section .recipes-container .content-container .recipe-content {
+    grid-template-columns: repeat(2, 50%);
+    font-size: 15px;
+    font-weight: 400;
+  }
+  .recipes-section .recipes-container .content-container .recipe-content .recipe-ingredients .ingredient-description {
+    width: 90%;
+  }
+}
+@media screen and (max-width: 600px) {
+  .recipes-section .recipes-container .content-container .recipe-content {
+    font-size: 12px;
+  }
+}
+@media screen and (max-width: 1000px) {
+  .recipes-section .recipes-container {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media screen and (max-width: 500px) {
+  .recipes-section .recipes-container {
+    width: 380px;
+  }
 }/*# sourceMappingURL=index.css.map */

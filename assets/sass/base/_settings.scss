@@ -17,8 +17,8 @@ body {
   min-width: 80%;
   max-width: 1240px;
 
-  @media screen and (max-width:500px){
-    margin: 0 ;
+  @media screen and (max-width: 500px) {
+    margin: 0;
     width: 100%;
   }
 }
@@ -58,6 +58,17 @@ input {
   font-family: $font-1-regular;
   border: none;
   cursor: pointer;
+  @media screen and(max-width: 1025px) {
+    // width: 380px;
+    justify-content: center;
+    gap: 10px;
+    svg {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      right: 20px;
+    }
+  }
 
   svg {
     fill: white;

@@ -12,11 +12,16 @@
     align-items: center;
     min-height: 290px;
     max-height: 310px;
+    padding: 0 0 50px;
 
     .filter-container {
       min-height: 70px;
+      width: 100%;
     }
 
+    .filter-btn {
+      width: 100%;
+    }
     .keyWords {
       position: absolute;
       left: 50%;
@@ -30,6 +35,11 @@
     #keyWords-2 {
       z-index: 15;
     }
+  }
+
+  @media screen and (max-width: 500px) {
+    width: 380px;
+    margin: 0 auto;
   }
 }
 
