@@ -30,9 +30,6 @@ export const closeTagList = () => {
   });
 };
 
-export const closeTagListWhenUserValidateTag = ()=> {
-  
-}
 
 /**
  * create a tag list and append it to the DOM

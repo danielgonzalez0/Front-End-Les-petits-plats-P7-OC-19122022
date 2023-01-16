@@ -34,11 +34,13 @@ export async function userSelectTagInTagList(HTMLList) {
       //launch research functions
       let recipesArray = await searchAll();
       //display DOM elements
+
       e.target.closest('.keyWords').firstElementChild.children[0].value = '';
       e.target.closest('.keyWords').classList.toggle('hidden');
       e.target
         .closest('.filter-container')
         .firstElementChild.classList.toggle('hidden');
+
       await displayErrorMessageWhenNoRecipes(recipesArray);
       await removeDOMElements();
       await displayRecipesCard(recipesArray);

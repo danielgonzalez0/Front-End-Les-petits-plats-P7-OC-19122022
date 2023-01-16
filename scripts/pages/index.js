@@ -3,7 +3,7 @@ import { TagCardAdaptater } from '../adaptaters/tagCardAdaptater.js';
 import { RecipesApi } from '../api/api.js';
 import { RecipesCard } from '../templates/recipesCard.js';
 import { searchAll } from '../utils/searchAll.js';
-import { searchByTags } from '../utils/searchByTags.js';
+import { searchByIngredients, searchByTags } from '../utils/searchByTags.js';
 import { closeTagList, openTagList, tagInit } from '../utils/tagForm.js';
 import {
   closeTaginTagSelection,
@@ -190,6 +190,18 @@ ingredientsTagInput.addEventListener('keydown', async (e) => {
 
       //listener in case user close the selected tag
       closeTaginTagSelection();
+
+      //update search
+      let resultIfTagsSelected = await searchAll();
+      removeDOMElements();
+      await displayRecipesCard(resultIfTagsSelected);
+      await displayTagsCard(resultIfTagsSelected);
+//
+       e.target.closest('.keyWords').firstElementChild.children[0].value = '';
+       e.target.closest('.keyWords').classList.toggle('hidden');
+       e.target
+         .closest('.filter-container')
+         .firstElementChild.classList.toggle('hidden');
       e.target.value = '';
     }
   }
@@ -234,6 +246,15 @@ appliancesTagInput.addEventListener('keydown', async (e) => {
 
       //listener in case user close the selected tag
       closeTaginTagSelection();
+
+      //update search
+      let resultIfTagsSelected = await searchAll();
+      removeDOMElements();
+      await displayRecipesCard(resultIfTagsSelected);
+      await displayTagsCard(resultIfTagsSelected);
+
+
+
       e.target.value = '';
     }
   }
@@ -277,6 +298,13 @@ ustensilsTagInput.addEventListener('keydown', async (e) => {
 
       //listener in case user close the selected tag
       closeTaginTagSelection();
+
+      //update search
+      let resultIfTagsSelected = await searchAll();
+      removeDOMElements();
+      await displayRecipesCard(resultIfTagsSelected);
+      await displayTagsCard(resultIfTagsSelected);
+
       e.target.value = '';
     }
   }
