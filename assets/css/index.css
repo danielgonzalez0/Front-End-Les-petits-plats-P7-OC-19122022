@@ -169,7 +169,13 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
-  padding-top: 25px;
+  padding: 15px 0;
+}
+@media screen and (max-width: 500px) {
+  .tag-section {
+    width: 380px;
+    margin: 0 auto;
+  }
 }
 .tag-section .tag-container {
   border-radius: 5px;
