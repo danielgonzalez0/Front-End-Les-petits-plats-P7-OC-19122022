@@ -3,6 +3,7 @@ import {
   displayErrorMessageWhenNoRecipes,
   displayRecipesCard,
   displayTagsCard,
+  ingredientsTagInput,
   recipesArray,
   removeDOMElements,
 } from '../pages/index.js';
@@ -21,6 +22,7 @@ export async function userSelectTagInTagList(HTMLList) {
     HTMLList.children[i].addEventListener('click', async (e) => {
       const tagSelected = e.target.dataset.tagname;
       const tagType = e.target.dataset.tagtype;
+
       tagElement = new TagCardAdaptater(
         tagSelected,
         tagType
@@ -28,9 +30,15 @@ export async function userSelectTagInTagList(HTMLList) {
       tagSection.appendChild(tagElement);
       //listen event to close tag on click
       closeTaginTagSelection();
+
       //launch research functions
       let recipesArray = await searchAll();
       //display DOM elements
+      e.target.closest('.keyWords').firstElementChild.children[0].value = '';
+      e.target.closest('.keyWords').classList.toggle('hidden');
+      e.target
+        .closest('.filter-container')
+        .firstElementChild.classList.toggle('hidden');
       await displayErrorMessageWhenNoRecipes(recipesArray);
       await removeDOMElements();
       await displayRecipesCard(recipesArray);

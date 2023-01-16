@@ -37,7 +37,6 @@ export const fetchDataRecipes = async () => {
  * fill all tag arrays according to the list of recipes
  * @param {object} array array with the list of recipes
  */
-
 export async function tagsArrayUpdate(array) {
   ingredientsArray = await new TagArrayAdaptater(
     array,
@@ -106,7 +105,6 @@ chercher « tarte aux pommes », « poisson », etc.
 /**
  * initialization of index page
  */
-
 async function init() {
   await fetchDataRecipes();
   await displayRecipesCard(recipesArray);
@@ -139,7 +137,7 @@ searchBar.addEventListener('input', async (e) => {
     }
   } else {
     await fetchDataRecipes();
-   let resultIfTagsSelected= await searchAll()
+    let resultIfTagsSelected = await searchAll();
     removeDOMElements();
     await displayRecipesCard(resultIfTagsSelected);
     await displayTagsCard(resultIfTagsSelected);
