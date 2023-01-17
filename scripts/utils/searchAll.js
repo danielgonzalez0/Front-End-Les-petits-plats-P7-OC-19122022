@@ -1,12 +1,7 @@
 //importation
 import { fetchDataRecipes, recipesArray, searchBar } from '../pages/index.js';
 import { searchRecipesByKeywords } from './searchByKeywords.js';
-import {
-  advancedSearchByTags,
-  searchByAppliances,
-  searchByIngredients,
-  searchByUstensils,
-} from './searchByTags.js';
+import { advancedSearchByTags } from './searchByTags.js';
 import { tagListRecuperationForSearchByTag } from './tagListRecuperation.js';
 
 /**

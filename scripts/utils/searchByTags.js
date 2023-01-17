@@ -17,7 +17,7 @@ export const searchByTags = (userTag, tagsArray) => {
  *
  * @param {object} ingredientsList array with all ingredients selected by the user
  * @param {object} appliancesList array with all appliances selected by the user
-//  * @param {object} ustensilsList array with all ustensils selected by the user
+ * @param {object} ustensilsList array with all ustensils selected by the user
  * @param {object} recipesArray list of recipes to filter
  * @returns
  */
