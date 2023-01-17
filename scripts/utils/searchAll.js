@@ -1,7 +1,12 @@
 //importation
 import { fetchDataRecipes, recipesArray, searchBar } from '../pages/index.js';
 import { searchRecipesByKeywords } from './searchByKeywords.js';
-import { searchByAppliances, searchByIngredients, searchByUstensils } from './searchByTags.js';
+import {
+  advancedSearchByTags,
+  searchByAppliances,
+  searchByIngredients,
+  searchByUstensils,
+} from './searchByTags.js';
 import { tagListRecuperationForSearchByTag } from './tagListRecuperation.js';
 
 /**
@@ -43,20 +48,25 @@ export const searchAll = async () => {
 
   console.log('-----step 3: filtre par tags-----');
 
-  recipesResult = await searchByIngredients(ingredientSelected, recipesResult);
+  // recipesResult = await searchByIngredients(ingredientSelected, recipesResult);
 
-  console.log('-----résultat par ingrédients-----');
+  // console.log('-----résultat par ingrédients-----');
+  // console.log(recipesResult);
+
+  // recipesResult = await searchByAppliances(appliancesSelected, recipesResult);
+  // console.log('-----résultat par appareils-----');
+  // console.log(recipesResult);
+
+  // recipesResult = await searchByUstensils(ustensilsSelected, recipesResult);
+
+  // console.log('-----résultat par ustensils-----');
+  advancedSearchByTags(
+    ingredientSelected,
+    appliancesSelected,
+    ustensilsSelected,
+    recipesResult
+  );
   console.log(recipesResult);
 
-  recipesResult = await searchByAppliances(appliancesSelected, recipesResult);
-  console.log('-----résultat par appareils-----');
-  console.log(recipesResult);
-
-  recipesResult = await searchByUstensils(ustensilsSelected, recipesResult);
-
-  console.log('-----résultat par ustensils-----');
-  console.log(recipesResult);
-
-  return recipesResult
+  return recipesResult;
 };
-
