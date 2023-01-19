@@ -4,35 +4,45 @@
  * @param {object} recipesArray array with all the recipes come from the API
  * @returns an array with the search result
  */
-export function searchRecipesByKeywords(keyword, recipesArray) {
+export async function searchRecipesByKeywords(keyword, recipesArray) {
   if (keyword.length >= 3) {
     let resultSearchArray = [];
+
     //search by name
-    for (let i = 0; i < recipesArray.length; i++) {
-      if (recipesArray[i].name.toLowerCase().includes(keyword.toLowerCase())) {
-        resultSearchArray.push(recipesArray[i]);
-        //search by description
-      } else if (
-        recipesArray[i].description
-          .toLowerCase()
-          .includes(keyword.toLowerCase())
-      ) {
-        resultSearchArray.push(recipesArray[i]);
-        //search by ingredients
-      } else {
-        for (let j = 0; j < recipesArray[i].ingredients.length; j++) {
-          if (
-            recipesArray[i].ingredients[j].ingredient
-              .toLowerCase()
-              .includes(keyword.toLowerCase()) &&
-            !resultSearchArray.includes(recipesArray[i])
-          ) {
-            resultSearchArray.push(recipesArray[i]);
-          }
-        }
+    resultSearchArray = recipesArray.filter((recipe) => {
+      return recipe.name.toLowerCase().includes(keyword.toLowerCase());
+    });
+
+    //search by description
+    let resultSearchByDescription = recipesArray.filter((recipe) => {
+      return recipe.description.toLowerCase().includes(keyword.toLowerCase());
+    });
+    resultSearchByDescription.forEach((recipe) => {
+      if (!resultSearchArray.includes(recipe)) {
+        resultSearchArray.push(recipe);
       }
-    } //end boucle for
+    });
+
+    //check result
+    console.log('resultSreachByDescription');
+    console.log(resultSearchByDescription);
+
+    //search by ingredients
+    let resultSearchByIngredients = recipesArray.filter((recipe) => {
+      return recipe.ingredients.some((ingredient) =>
+        ingredient.ingredient.toLowerCase().includes(keyword.toLowerCase())
+      );
+    });
+    resultSearchByDescription.forEach((recipe) => {
+      if (!resultSearchArray.includes(recipe)) {
+        resultSearchArray.push(recipe);
+      }
+    });
+
+    //check result
+    console.log('resultSreachByIngredients');
+    console.log(resultSearchByIngredients);
+  
     return resultSearchArray;
   }
 }
-
