@@ -14,7 +14,7 @@ export const searchByTags = (userTag, tagsArray) => {
 };
 
 /**
- *
+ *filter a list of recipes according to tags selected by users
  * @param {object} ingredientsList array with all ingredients selected by the user
  * @param {object} appliancesList array with all appliances selected by the user
  * @param {object} ustensilsList array with all ustensils selected by the user
@@ -28,133 +28,80 @@ export const advancedSearchByTags = async (
   recipesArray
 ) => {
   if (recipesArray.length > 0) {
+    // for (let i = recipesArray.length - 1; i >= 0; i--) {
+    // //declaration counter to check if tag is valid
+    // let countAppliancesValid = 0;
+    // let countIngredientValid = 0;
+    // let countUstentilsValid = 0;
+    //search by ingredients
+    //check if ingredient is included in a recipe
+
+    // recipesArray.forEach((recipe) => {
     for (let i = recipesArray.length - 1; i >= 0; i--) {
       //declaration counter to check if tag is valid
-      let countAppliancesVAlid = 0;
+      let countAppliancesValid = 0;
       let countIngredientValid = 0;
-      let countUstentilsValid = 0;
+      let countUstensilsValid = 0;
+      let ingredientsListLength = ingredientsList.length;
       //search by ingredients
       //check if ingredient is included in a recipe
       if (ingredientsList.length > 0) {
-        for (let j = 0; j < ingredientsList.length; j++) {
-          for (let k = 0; k < recipesArray[i].ingredients.length; k++) {
+        ingredientsList.forEach((ingredientTag) => {
+          recipesArray[i].ingredients.forEach((ingredient) => {
             if (
-              recipesArray[i].ingredients[k].ingredient
+              ingredient.ingredient
                 .toLowerCase()
-                .includes(ingredientsList[j].name.toLowerCase())
+                .includes(ingredientTag.name.toLowerCase())
             ) {
               countIngredientValid++;
             }
-          } //end loop ingredients
-        }
+          });
+        });
       } else {
         countIngredientValid = 1;
-      } //end loop ingredients tag list
-
+      }
       //search by appliances
       //check if apppliance is included in a recipe
       if (appliancesList.length > 0) {
-        for (let j = 0; j < appliancesList.length; j++) {
+        appliancesList.forEach((applianceTag) => {
           if (
             recipesArray[i].appliance
               .toLowerCase()
-              .includes(appliancesList[j].name.toLowerCase())
+              .includes(applianceTag.name.toLowerCase())
           ) {
-            countAppliancesVAlid++;
+            countAppliancesValid++;
           }
-        }
+        });
       } else {
-        countAppliancesVAlid = 1;
-      } //end loop appliances tags
-
+        countAppliancesValid = 1;
+      }
       //search by ustensils
+      //check if ustensil is included in a recipe
       if (ustensilsList.length > 0) {
-        for (let j = 0; j < ustensilsList.length; j++) {
-          for (let k = 0; k < recipesArray[i].ustensils.length; k++) {
+        ustensilsList.forEach((ustensilTag) => {
+          recipesArray[i].ustensils.forEach((ustensil) => {
             if (
-              recipesArray[i].ustensils[k]
-                .toLowerCase()
-                .includes(ustensilsList[j].name.toLowerCase())
+              ustensil.toLowerCase().includes(ustensilTag.name.toLowerCase())
             ) {
-              countUstentilsValid++;
+              countUstensilsValid++;
             }
-          } //end loop ingredients
-        }
+          });
+        });
       } else {
-        countUstentilsValid = 1;
-      } //end loop ustentils tag
-
+        countUstensilsValid = 1;
+      }
       //delete recipe if one counter = 0
       if (
-        countIngredientValid === 0 ||
-        countAppliancesVAlid === 0 ||
-        countUstentilsValid === 0
+        (ingredientsList.length > 0 &&
+          countIngredientValid != ingredientsList.length) ||
+        (appliancesList.length > 0 &&
+          countAppliancesValid != appliancesList.length) ||
+        (ustensilsList.length > 0 &&
+          countUstensilsValid != ustensilsList.length)
       ) {
         recipesArray.splice(i, 1);
       }
-    } //end loop recipes
+    } //end loop recipesArray
   }
   return recipesArray;
 };
-
-// /**
-//  * filter a list of recipes according to a list of ingredients
-//  * @param {object} ingredientsList array with all the selected ingredients for the research
-//  * @param {object} recipesArray list of recipes to filter
-//  */
-// export const searchByIngredients = async (ingredientsList, recipesArray) => {
-//   if (ingredientsList.length > 0) {
-//     ingredientsList.forEach((ingredientTag) => {
-//       recipesArray = recipesArray.filter((recipe) => {
-//         return recipe.ingredients.some((ingredient) =>
-//           ingredient.ingredient
-//             .toLowerCase()
-//             .includes(ingredientTag.name.toLowerCase())
-//         );
-//       }); //end filter
-//     });
-//     return recipesArray;
-//   } else {
-//     return recipesArray;
-//   }
-// };
-
-// /**
-//  * filter a list of recipes according to a list of appliances
-//  * @param {object} appliancesList array with all the selected appliances for the research
-//  * @param {object} recipesArray list of recipes to filter
-//  */
-// export const searchByAppliances = async (appliancesList, recipesArray) => {
-//   if (appliancesList.length > 0) {
-//     appliancesList.forEach((applianceTag) => {
-//       recipesArray = recipesArray.filter((recipe) => {
-//         return recipe.appliance
-//           .toLowerCase()
-//           .includes(applianceTag.name.toLowerCase());
-//       }); //end filter
-//     });
-//     return recipesArray;
-//   } else {
-//     return recipesArray;
-//   }
-// };
-
-// /**
-//  * filter a list of recipes according to a list of ustensils
-//  * @param {object} ustensilsList array with all the selected ustensils for the research
-//  * @param {object} recipesArray list of recipes to filter
-//  */
-// export const searchByUstensils = async (ustensilsList, recipesArray) => {
-//   if (ustensilsList.length > 0) {
-//     ustensilsList.forEach((ustensilTag) => {
-//       recipesArray = recipesArray.filter((recipe) => {
-//         return recipe.ustensils.some((ustensil) =>
-//           ustensil.toLowerCase().includes(ustensilTag.name.toLowerCase())
-//         );
-//       }); //end filter
-//     });
-//     return recipesArray;
-//   } else {
-//     return recipesArray;
-//   }
-// };
