@@ -28,21 +28,12 @@ export const advancedSearchByTags = async (
   recipesArray
 ) => {
   if (recipesArray.length > 0) {
-    // for (let i = recipesArray.length - 1; i >= 0; i--) {
-    // //declaration counter to check if tag is valid
-    // let countAppliancesValid = 0;
-    // let countIngredientValid = 0;
-    // let countUstentilsValid = 0;
-    //search by ingredients
-    //check if ingredient is included in a recipe
-
-    // recipesArray.forEach((recipe) => {
     for (let i = recipesArray.length - 1; i >= 0; i--) {
       //declaration counter to check if tag is valid
       let countAppliancesValid = 0;
       let countIngredientValid = 0;
       let countUstensilsValid = 0;
-      let ingredientsListLength = ingredientsList.length;
+  
       //search by ingredients
       //check if ingredient is included in a recipe
       if (ingredientsList.length > 0) {
