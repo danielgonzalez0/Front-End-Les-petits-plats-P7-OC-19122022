@@ -7,12 +7,10 @@
 export async function searchRecipesByKeywords(keyword, recipesArray) {
   if (keyword.length >= 3) {
     let resultSearchArray = [];
-
     //search by name
     resultSearchArray = recipesArray.filter((recipe) => {
       return recipe.name.toLowerCase().includes(keyword.toLowerCase());
     });
-
     //search by description
     let resultSearchByDescription = recipesArray.filter((recipe) => {
       return recipe.description.toLowerCase().includes(keyword.toLowerCase());
@@ -22,27 +20,17 @@ export async function searchRecipesByKeywords(keyword, recipesArray) {
         resultSearchArray.push(recipe);
       }
     });
-
-    //check result
-    console.log('resultSreachByDescription');
-    console.log(resultSearchByDescription);
-
     //search by ingredients
     let resultSearchByIngredients = recipesArray.filter((recipe) => {
       return recipe.ingredients.some((ingredient) =>
         ingredient.ingredient.toLowerCase().includes(keyword.toLowerCase())
       );
     });
-    resultSearchByDescription.forEach((recipe) => {
+    resultSearchByIngredients.forEach((recipe) => {
       if (!resultSearchArray.includes(recipe)) {
         resultSearchArray.push(recipe);
       }
     });
-
-    //check result
-    console.log('resultSreachByIngredients');
-    console.log(resultSearchByIngredients);
-  
     return resultSearchArray;
   }
 }

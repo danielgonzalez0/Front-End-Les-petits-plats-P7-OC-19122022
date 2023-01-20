@@ -33,7 +33,7 @@ export const advancedSearchByTags = async (
       let countAppliancesValid = 0;
       let countIngredientValid = 0;
       let countUstensilsValid = 0;
-  
+
       //search by ingredients
       //check if ingredient is included in a recipe
       if (ingredientsList.length > 0) {

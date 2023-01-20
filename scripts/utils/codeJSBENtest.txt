@@ -1,0 +1,200 @@
+/***************************** bloc code méthode array**************************************/
+
+if (keyword.length >= 3) {
+    let resultSearchArray = [];
+    //search by name
+    resultSearchArray = recipesArray.filter((recipe) => {
+      return recipe.name.toLowerCase().includes(keyword.toLowerCase());
+    });
+    //search by description
+    let resultSearchByDescription = recipesArray.filter((recipe) => {
+      return recipe.description.toLowerCase().includes(keyword.toLowerCase());
+    });
+    resultSearchByDescription.forEach((recipe) => {
+      if (!resultSearchArray.includes(recipe)) {
+        resultSearchArray.push(recipe);
+      }
+    });
+    //search by ingredients
+    let resultSearchByIngredients = recipesArray.filter((recipe) => {
+      return recipe.ingredients.some((ingredient) =>
+        ingredient.ingredient.toLowerCase().includes(keyword.toLowerCase())
+      );
+    });
+    resultSearchByIngredients.forEach((recipe) => {
+      if (!resultSearchArray.includes(recipe)) {
+        resultSearchArray.push(recipe);
+      }
+    });
+    return resultSearchArray;
+}
+
+if (recipesArray.length > 0) {
+    for (let i = recipesArray.length - 1; i >= 0; i--) {
+      //declaration counter to check if tag is valid
+      let countAppliancesValid = 0;
+      let countIngredientValid = 0;
+      let countUstensilsValid = 0;
+
+      //search by ingredients
+      //check if ingredient is included in a recipe
+      if (ingredientsList.length > 0) {
+        ingredientsList.forEach((ingredientTag) => {
+          recipesArray[i].ingredients.forEach((ingredient) => {
+            if (
+              ingredient.ingredient
+                .toLowerCase()
+                .includes(ingredientTag.name.toLowerCase())
+            ) {
+              countIngredientValid++;
+            }
+          });
+        });
+      } else {
+        countIngredientValid = 1;
+      }
+      //search by appliances
+      //check if apppliance is included in a recipe
+      if (appliancesList.length > 0) {
+        appliancesList.forEach((applianceTag) => {
+          if (
+            recipesArray[i].appliance
+              .toLowerCase()
+              .includes(applianceTag.name.toLowerCase())
+          ) {
+            countAppliancesValid++;
+          }
+        });
+      } else {
+        countAppliancesValid = 1;
+      }
+      //search by ustensils
+      //check if ustensil is included in a recipe
+      if (ustensilsList.length > 0) {
+        ustensilsList.forEach((ustensilTag) => {
+          recipesArray[i].ustensils.forEach((ustensil) => {
+            if (
+              ustensil.toLowerCase().includes(ustensilTag.name.toLowerCase())
+            ) {
+              countUstensilsValid++;
+            }
+          });
+        });
+      } else {
+        countUstensilsValid = 1;
+      }
+      //delete recipe if one counter = 0
+      if (
+        (ingredientsList.length > 0 &&
+          countIngredientValid != ingredientsList.length) ||
+        (appliancesList.length > 0 &&
+          countAppliancesValid != appliancesList.length) ||
+        (ustensilsList.length > 0 &&
+          countUstensilsValid != ustensilsList.length)
+      ) {
+        recipesArray.splice(i, 1);
+      }
+    } //end loop recipesArray
+  }
+  return recipesArray;
+
+/***************************** bloc code méthode native**************************************/
+
+ if (keyword.length >= 3) {
+    let resultSearchArray = [];
+    //search by name
+    for (let i = 0; i < recipesArray.length; i++) {
+      if (recipesArray[i].name.toLowerCase().includes(keyword.toLowerCase())) {
+        resultSearchArray.push(recipesArray[i]);
+        //search by description
+      } else if (
+        recipesArray[i].description
+          .toLowerCase()
+          .includes(keyword.toLowerCase())
+      ) {
+        resultSearchArray.push(recipesArray[i]);
+        //search by ingredients
+      } else {
+        for (let j = 0; j < recipesArray[i].ingredients.length; j++) {
+          if (
+            recipesArray[i].ingredients[j].ingredient
+              .toLowerCase()
+              .includes(keyword.toLowerCase()) &&
+            !resultSearchArray.includes(recipesArray[i])
+          ) {
+            resultSearchArray.push(recipesArray[i]);
+          }
+        }
+      }
+    } //end boucle for
+    return resultSearchArray;
+  }
+
+if (recipesArray.length > 0) {
+    for (let i = recipesArray.length - 1; i >= 0; i--) {
+      //declaration counter to check if tag is valid
+      let countAppliancesVAlid = 0;
+      let countIngredientValid = 0;
+      let countUstentilsValid = 0;
+      //search by ingredients
+      //check if ingredient is included in a recipe
+      if (ingredientsList.length > 0) {
+        for (let j = 0; j < ingredientsList.length; j++) {
+          for (let k = 0; k < recipesArray[i].ingredients.length; k++) {
+            if (
+              recipesArray[i].ingredients[k].ingredient
+                .toLowerCase()
+                .includes(ingredientsList[j].name.toLowerCase())
+            ) {
+              countIngredientValid++;
+            }
+          } //end loop ingredients
+        }
+      } else {
+        countIngredientValid = 1;
+      } //end loop ingredients tag list
+
+      //search by appliances
+      //check if apppliance is included in a recipe
+      if (appliancesList.length > 0) {
+        for (let j = 0; j < appliancesList.length; j++) {
+          if (
+            recipesArray[i].appliance
+              .toLowerCase()
+              .includes(appliancesList[j].name.toLowerCase())
+          ) {
+            countAppliancesVAlid++;
+          }
+        }
+      } else {
+        countAppliancesVAlid = 1;
+      } //end loop appliances tags
+
+      //search by ustensils
+      if (ustensilsList.length > 0) {
+        for (let j = 0; j < ustensilsList.length; j++) {
+          for (let k = 0; k < recipesArray[i].ustensils.length; k++) {
+            if (
+              recipesArray[i].ustensils[k]
+                .toLowerCase()
+                .includes(ustensilsList[j].name.toLowerCase())
+            ) {
+              countUstentilsValid++;
+            }
+          } //end loop ingredients
+        }
+      } else {
+        countUstentilsValid = 1;
+      } //end loop ustentils tag
+
+      //delete recipe if one counter = 0
+      if (
+        countIngredientValid === 0 ||
+        countAppliancesVAlid === 0 ||
+        countUstentilsValid === 0
+      ) {
+        recipesArray.splice(i, 1);
+      }
+    } //end loop recipes
+  }
+  return recipesArray;
