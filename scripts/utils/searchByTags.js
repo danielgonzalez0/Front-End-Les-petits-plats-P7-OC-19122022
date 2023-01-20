@@ -14,12 +14,12 @@ export const searchByTags = (userTag, tagsArray) => {
 };
 
 /**
- *
+ * filter a list of recipes according to tags selected by users
  * @param {object} ingredientsList array with all ingredients selected by the user
  * @param {object} appliancesList array with all appliances selected by the user
  * @param {object} ustensilsList array with all ustensils selected by the user
  * @param {object} recipesArray list of recipes to filter
- * @returns
+ * @returns an array with the search result
  */
 export const advancedSearchByTags = async (
   ingredientsList,
