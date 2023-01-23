@@ -1,0 +1,15 @@
+étape installation: 
+
+- commande installation: npm install eslint --save-dev
+- commande config: npx eslint --init
+- choisir json pour le fichier .eslintrc dans config
+- ajouter les lignes suivantes dans package.json
+
+{
+  "scripts": {
+    "lint": "eslint ." 
+  }
+}
+
+- créer un gitignore avec node_modules/
+- commande pour executer:  npm run lint
