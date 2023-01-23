@@ -71,8 +71,8 @@ export const advancedSearchByTags = async (
 
       //search by ustensils
       if (ustensilsList.length > 0) {
-        let countUstentilsValid = 0;
         for (let j = 0; j < ustensilsList.length; j++) {
+          let countUstentilsValid = 0;
           for (let k = 0; k < recipesArray[i].ustensils.length; k++) {
             if (
               recipesArray[i].ustensils[k]
