@@ -28,15 +28,12 @@ export const advancedSearchByTags = async (
   recipesArray
 ) => {
   if (recipesArray.length > 0) {
-    for (let i = recipesArray.length - 1; i >= 0; i--) {
-      //declaration counter to check if tag is valid
-      let countAppliancesVAlid = 0;
-      let countIngredientValid = 0;
-      let countUstentilsValid = 0;
+    loopRecipes: for (let i = recipesArray.length - 1; i >= 0; i--) {
       //search by ingredients
       //check if ingredient is included in a recipe
       if (ingredientsList.length > 0) {
         for (let j = 0; j < ingredientsList.length; j++) {
+          let countIngredientValid = 0;
           for (let k = 0; k < recipesArray[i].ingredients.length; k++) {
             if (
               recipesArray[i].ingredients[k].ingredient
@@ -46,29 +43,35 @@ export const advancedSearchByTags = async (
               countIngredientValid++;
             }
           } //end loop ingredients
+          if (countIngredientValid === 0) {
+            recipesArray.splice(i, 1);
+            continue loopRecipes;
+          }
         }
-      } else {
-        countIngredientValid = 1;
       } //end loop ingredients tag list
 
       //search by appliances
       //check if apppliance is included in a recipe
       if (appliancesList.length > 0) {
+        let countAppliancesValid = 0;
         for (let j = 0; j < appliancesList.length; j++) {
           if (
             recipesArray[i].appliance
               .toLowerCase()
               .includes(appliancesList[j].name.toLowerCase())
           ) {
-            countAppliancesVAlid++;
+            countAppliancesValid++;
           }
         }
-      } else {
-        countAppliancesVAlid = 1;
+        if (countAppliancesValid === 0) {
+          recipesArray.splice(i, 1);
+          continue loopRecipes;
+        }
       } //end loop appliances tags
 
       //search by ustensils
       if (ustensilsList.length > 0) {
+        let countUstentilsValid = 0;
         for (let j = 0; j < ustensilsList.length; j++) {
           for (let k = 0; k < recipesArray[i].ustensils.length; k++) {
             if (
@@ -78,20 +81,13 @@ export const advancedSearchByTags = async (
             ) {
               countUstentilsValid++;
             }
-          } //end loop ingredients
+          } //end loop ustensils
+          if (countUstentilsValid === 0) {
+            recipesArray.splice(i, 1);
+            continue loopRecipes;
+          }
         }
-      } else {
-        countUstentilsValid = 1;
       } //end loop ustentils tag
-
-      //delete recipe if one counter = 0
-      if (
-        countIngredientValid === 0 ||
-        countAppliancesVAlid === 0 ||
-        countUstentilsValid === 0
-      ) {
-        recipesArray.splice(i, 1);
-      }
     } //end loop recipes
   }
   return recipesArray;
