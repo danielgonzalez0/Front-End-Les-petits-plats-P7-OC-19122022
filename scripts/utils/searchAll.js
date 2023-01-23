@@ -43,18 +43,6 @@ export const searchAll = async () => {
 
   console.log('-----step 3: filtre par tags-----');
 
-  // recipesResult = await searchByIngredients(ingredientSelected, recipesResult);
-
-  // console.log('-----résultat par ingrédients-----');
-  // console.log(recipesResult);
-
-  // recipesResult = await searchByAppliances(appliancesSelected, recipesResult);
-  // console.log('-----résultat par appareils-----');
-  // console.log(recipesResult);
-
-  // recipesResult = await searchByUstensils(ustensilsSelected, recipesResult);
-
-  // console.log('-----résultat par ustensils-----');
   advancedSearchByTags(
     ingredientSelected,
     appliancesSelected,

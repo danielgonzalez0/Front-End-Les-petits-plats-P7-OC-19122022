@@ -3,8 +3,6 @@ import {
   displayErrorMessageWhenNoRecipes,
   displayRecipesCard,
   displayTagsCard,
-  ingredientsTagInput,
-  recipesArray,
   removeDOMElements,
 } from '../pages/index.js';
 import { searchAll } from './searchAll.js';
