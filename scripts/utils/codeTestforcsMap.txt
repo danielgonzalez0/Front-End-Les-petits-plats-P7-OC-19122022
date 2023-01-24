@@ -1,0 +1,46 @@
+test rapidité boucle for vs map vs foreach  avec multiples conditions et un grand nb d'itérations
+
+const arr = 'giyrxgfoyugrxeupqzuehfgfccsydgfpxwieuhqzuiehfuiegfyuegfpegrygrypiop634927chmiuqefdyiqdetfcityrfiwecfiuegciquegiyrxgfoyugrxeupqzuehfgfccsydgfpxwieuhqzuiehfuiegfyuegfpegrygrypiop634927chmiuqefdyiqdetfcityrfiwecfiuegciquegiyrxgfoyugrxeupqzuehfgfccsydgfpxwieuhqzuiehfuiegfyuegfpegrygrypiop634927chmiuqefdyiqdetfcityrfiwecfiuegciquegiyrxgfoyugrxeupqzuehfgfccsydgfpxwieuhqzuiehfuiegfyuegfpegrygrypiop634927chmiuqefdyiqdetfcityrfiwecfiuegciquegiyrxgfoyugrxeupqzuehfgfccsydgfpxwieuhqzuiehfuiegfyuegfpegrygrypiop634927chmiuqefdyiqdetfcityrfiwecfiuegciquegiyrxgfoyugrxeupqzuehfgfccsydgfpxwieuhqzuiehfuiegfyuegfpegrygrypiop634927chmiuqefdyiqdetfcityrfiwecfiuegciquegiyrxgfoyugrxeupqzuehfgfccsydgfpxwieuhqzuiehfuiegfyuegfpegrygrypiop634927chmiuqefdyiqdetfcityrfiwecfiuegciquegiyrxgfoyugrxeupqzuehfgfccsydgfpxwieuhqzuiehfuiegfyuegfpegrygrypiop634927chmiuqefdyiqdetfcityrfiwecfiuegcique'.split('');
+let a = [];
+
+for (let i = 0; i < arr.length; i++) {
+  if (
+    arr[i].includes('a') ||
+    arr[i].includes('b') ||
+    arr[i].includes('c') ||
+    arr[i].includes('d') ||
+    arr[i].includes('e') ||
+    arr[i].includes('f') ||
+    arr[i].includes('g')
+  ) {
+    a.push(arr[i]);
+  }
+}
+
+arr.map((i) => {
+  if (
+    i.includes('a') ||
+    i.includes('b') ||
+    i.includes('c') ||
+    i.includes('d') ||
+    i.includes('e') ||
+    i.includes('f') ||
+    i.includes('g')
+  ) {
+    a.push(i);
+  }
+});
+
+arr.forEach((i) => {
+  if (
+    i.includes('a') ||
+    i.includes('b') ||
+    i.includes('c') ||
+    i.includes('d') ||
+    i.includes('e') ||
+    i.includes('f') ||
+    i.includes('g')
+  ) {
+    a.push(i);
+  }
+});
