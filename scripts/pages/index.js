@@ -318,16 +318,4 @@ ustensilsTagInput.addEventListener('keydown', async (e) => {
   }
 });
 
-arr.forEach((i) => {
-  if (
-    i.includes('a') ||
-    i.includes('b') ||
-    i.includes('c') ||
-    i.includes('d') ||
-    i.includes('e') ||
-    i.includes('f') ||
-    i.includes('g')
-  ) {
-    a.push(i);
-  }
-});
+
