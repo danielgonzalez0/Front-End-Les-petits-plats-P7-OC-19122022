@@ -1,3 +1,4 @@
+//importation
 import { TagArrayAdaptater } from '../adaptaters/tagArrayAdaptater.js';
 import { TagCardAdaptater } from '../adaptaters/tagCardAdaptater.js';
 import { RecipesApi } from '../api/api.js';
@@ -10,13 +11,15 @@ import {
   tagSection,
   userSelectTagInTagList,
 } from '../utils/tagListFunctions.js';
-import { tagListRecuperationForSearchByTag } from '../utils/tagListRecuperation.js';
 
+//declaration
 export let recipesArray = [];
 export let ingredientsArray = [];
 export let appliancesArray = [];
 export let ustensilsArray = [];
 export let updatedRecipesArray = [];
+
+
 export const ingredientsTagList = document.getElementById('ingredientsList');
 export const appliancesTagList = document.getElementById('appliancesList');
 export const ustensilsTagList = document.getElementById('ustensilsList');
@@ -28,6 +31,10 @@ export const ustensilsTagInput = document.getElementById('keyWordsUstensils');
 export const recipesSection = document.querySelector('.recipes-section');
 export const searchBar = document.getElementById('searchbar');
 
+
+/**
+ * fetch data from api in recipesArray
+ */
 export const fetchDataRecipes = async () => {
   const recipes = new RecipesApi('./assets/data/recipes.json');
   recipesArray = await recipes.getRecipesData();
@@ -147,7 +154,6 @@ searchBar.addEventListener('input', async (e) => {
 searchBar.addEventListener('keydown', (e) => {
   if (searchBar.value !== '' && e.keyCode === 13) {
     e.preventDefault();
-    console.log(recipesArray);
   }
 });
 
@@ -184,9 +190,6 @@ ingredientsTagInput.addEventListener('keydown', async (e) => {
         'ingredientsList'
       ).createTagCardbyType();
       tagSection.appendChild(tagElement);
-
-      let tagsSelectedArray = await tagListRecuperationForSearchByTag();
-      console.log(tagsSelectedArray);
 
       //listener in case user close the selected tag
       closeTaginTagSelection();
@@ -241,9 +244,6 @@ appliancesTagInput.addEventListener('keydown', async (e) => {
       ).createTagCardbyType();
       tagSection.appendChild(tagElement);
 
-      let tagsSelectedArray = await tagListRecuperationForSearchByTag();
-      console.log(tagsSelectedArray);
-
       //listener in case user close the selected tag
       closeTaginTagSelection();
 
@@ -296,8 +296,6 @@ ustensilsTagInput.addEventListener('keydown', async (e) => {
         'ustensilsList'
       ).createTagCardbyType();
       tagSection.appendChild(tagElement);
-      let tagsSelectedArray = await tagListRecuperationForSearchByTag();
-      console.log(tagsSelectedArray);
 
       //listener in case user close the selected tag
       closeTaginTagSelection();
