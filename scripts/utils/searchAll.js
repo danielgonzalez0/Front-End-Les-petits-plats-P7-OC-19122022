@@ -19,9 +19,6 @@ export const searchAll = async () => {
       recipesArray
     );
   }
-  console.log('********fonction sort all**********');
-  console.log('-----step 1: appel api + searchByKeywords-----');
-  console.log(recipesResult);
 
   //tags recuperatation
   let tagsSelectedArray = await tagListRecuperationForSearchByTag();
@@ -34,34 +31,15 @@ export const searchAll = async () => {
   let ustensilsSelected = tagsSelectedArray.filter(
     (ustensil) => ustensil.type === 'ustensil'
   );
-  console.log('-----step 2: recuperation des tags par type (3 tableaux)-----');
-  console.log(ingredientSelected);
-  console.log(appliancesSelected);
-  console.log(ustensilsSelected);
 
   //search by tags
 
-  console.log('-----step 3: filtre par tags-----');
-
-  // recipesResult = await searchByIngredients(ingredientSelected, recipesResult);
-
-  // console.log('-----résultat par ingrédients-----');
-  // console.log(recipesResult);
-
-  // recipesResult = await searchByAppliances(appliancesSelected, recipesResult);
-  // console.log('-----résultat par appareils-----');
-  // console.log(recipesResult);
-
-  // recipesResult = await searchByUstensils(ustensilsSelected, recipesResult);
-
-  // console.log('-----résultat par ustensils-----');
   advancedSearchByTags(
     ingredientSelected,
     appliancesSelected,
     ustensilsSelected,
     recipesResult
   );
-  console.log(recipesResult);
 
   return recipesResult;
 };

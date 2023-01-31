@@ -1,4 +1,3 @@
-
 export const selectedTagSection = document.querySelector('.tag-section');
 
 /**
@@ -30,7 +29,5 @@ export async function tagListRecuperationForSearchByTag() {
         break;
     }
   }
-  return selectedIngredientTable
+  return selectedIngredientTable;
 }
-
-
